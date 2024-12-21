@@ -4,15 +4,17 @@ import Footer from "../components/Footer";
 
 const MainLayout = () => {
   return (
-    <div>
-      <nav>
-        <Navbar/>
-      </nav>
+    <div className="font-roboto">
+      <header>
+        <nav>
+          <Navbar />
+        </nav>
+      </header>
       <main>
-        <Outlet/>
+        <Outlet />
       </main>
       <footer>
-        <Footer/>
+        <Footer />
       </footer>
     </div>
   );

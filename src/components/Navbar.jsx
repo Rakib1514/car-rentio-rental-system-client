@@ -6,7 +6,7 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/" className="btn btn-ghost">Home</NavLink>
+        <NavLink to="/" className="btn btn-outline">Home</NavLink>
       </li>
     </>
   );
