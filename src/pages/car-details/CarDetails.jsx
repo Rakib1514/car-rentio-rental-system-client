@@ -2,8 +2,12 @@ import { FaCarSide } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 
 const CarDetails = () => {
+  const car = useLoaderData();
+
   const { carModel, availability, dailyRentalPrice, features, description } =
-    useLoaderData();
+    car;
+
+  // TODO: need to add collection of review get from server side {reviews, car}
 
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -25,7 +29,8 @@ const CarDetails = () => {
             <ul className="text-left">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-2">
-                  <FaCarSide/>{feature}
+                  <FaCarSide />
+                  {feature}
                 </li>
               ))}
             </ul>

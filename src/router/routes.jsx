@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/homePage/Home";
 import CarDetails from "../pages/car-details/CarDetails";
-import carLoader from "../loader/carLoader";
+// import axios from "axios";
 
 const routes = createBrowserRouter([
   {
@@ -16,7 +16,8 @@ const routes = createBrowserRouter([
       {
         path: 'car/:id',
         element: <CarDetails/>,
-        loader: carLoader,
+        loader: ({params}) => fetch(`http://localhost:5000/car/${params.id}`)
+      
       }
     ]
   },
