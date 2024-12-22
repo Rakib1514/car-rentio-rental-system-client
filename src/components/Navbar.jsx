@@ -14,6 +14,11 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/add-car" className="btn btn-outline">
+          Add Car
+        </NavLink>
+      </li>
     </>
   );
 
@@ -65,7 +70,7 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <p>
-              {user.email}{" "}
+              {user.displayName}{" "}
               <span onClick={signOutUser} className="btn btn-link text-black">
                 Sign-out
               </span>

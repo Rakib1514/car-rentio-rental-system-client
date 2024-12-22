@@ -1,27 +1,44 @@
+import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const { signUpUser, updateUserProfile } = useAuth();
+  const { signUpUser, updateUserProfile, setLoading } = useAuth();
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
-
     signUpUser(data.email, data.password)
       .then((result) => {
         if (result.user) {
+          
           updateUserProfile({
             displayName: data.displayName,
             photoURL: data.photoURL,
           }).then(() => {
+            axios
+              .post("/users", {
+                displayName: data.displayName,
+                email: data.email,
+                photoURL: data.photoURL,
+                uid: result.user.uid,
+              })
+              .then(() => {
+                setLoading(false);
+                navigate("/");
+              });
             alert("Profile Updated");
+            
           });
-        
+          
         }
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error.message);
       });
   };
@@ -29,16 +46,12 @@ const Register = () => {
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row">
-        <div className="text-center w-1/2 lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+        <div className="text-center lg:w-1/2 w-full lg:text-left">
+          <h1 className="text-5xl font-bold">Create an Account now!</h1>
+          <p className="py-6">Provident cupiditate voluptatem et in.</p>
         </div>
 
-        <div className="card bg-base-100 w-1/2 shrink-0 shadow-2xl">
+        <div className="card bg-base-100 lg:w-1/2 w-full shrink-0 shadow-2xl">
           <form onSubmit={handleSubmit} className="card-body">
             <div className="form-control Name">
               <label className="label">
@@ -90,7 +103,7 @@ const Register = () => {
                 required
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+                <a className="label-text-alt link link-hover">
                   Forgot password?
                 </a>
               </label>

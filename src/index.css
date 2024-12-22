@@ -12,3 +12,7 @@
 .stateCard h3{
   @apply text-xl font-semibold mb-2;
 }
+
+.active{
+  @apply bg-primary text-white;
+}
