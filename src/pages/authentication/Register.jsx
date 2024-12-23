@@ -1,6 +1,7 @@
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import { Navigate, useNavigate } from "react-router-dom";
+import GoogleSignIn from "./GoogleSignIn";
 
 const Register = () => {
   const { signUpUser, updateUserProfile, setLoading, user } = useAuth();
@@ -53,6 +54,7 @@ const Register = () => {
         </div>
 
         <div className="card bg-base-100 lg:w-1/2 w-full shrink-0 shadow-2xl">
+        <GoogleSignIn/>
           <form onSubmit={handleSubmit} className="card-body">
             <div className="form-control Name">
               <label className="label">

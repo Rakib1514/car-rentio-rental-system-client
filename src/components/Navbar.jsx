@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import {  useState } from "react";
+import { useState } from "react";
 import SignIn from "../pages/authentication/SignIn";
 
 const Navbar = () => {
-  const { user, loading, signOutUser } = useAuth();
+  const { user, signOutUser } = useAuth();
 
   // Navbar Button Links
   const links = (
@@ -32,19 +32,11 @@ const Navbar = () => {
     </>
   );
 
-  // const {open, handleClickOpen, handleClose}  = useContext(GContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [open, setOpen] = useState(false);
-  const handleClickOpen = () => {
-    setOpen(true);
+  const showModal = () => {
+    setIsModalOpen(true);
   };
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
 
   return (
     <div>
@@ -89,7 +81,7 @@ const Navbar = () => {
             </p>
           ) : (
             <a
-              onClick={handleClickOpen}
+              onClick={showModal}
               className="font-semibold hover:border-b hover:border-black cursor-pointer"
             >
               Sign-in | Register
@@ -97,7 +89,10 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      <SignIn handleClose={handleClose} open={open} />
+      <SignIn
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
     </div>
   );
 };

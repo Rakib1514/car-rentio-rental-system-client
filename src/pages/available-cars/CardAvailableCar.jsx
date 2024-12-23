@@ -13,7 +13,7 @@ const CardAvailableCar = ({ car, view }) => {
         view ? "flex-col justify-between" : "justify-between p-4"
       } border border-gray-200  pb-0`}
     >
-      <div className={` ${view ? 'p-4': "flex gap-6"}`}>
+      <div className={`  ${view ? 'p-4': "flex gap-6 md:w-2/4 flex-col md:flex-row"}`}>
         <img
           src={image}
           alt={carModel}
@@ -32,7 +32,7 @@ const CardAvailableCar = ({ car, view }) => {
         </div>
       </div>
 
-      <ul className={`grid px-4 ${view ? ' grid-cols-2 ': 'grid-cols-1  hidden sm:grid'}`}>
+      <ul className={`grid md:flex-grow px-4 ${view ? ' grid-cols-2 ': 'grid-cols-1  hidden sm:grid'}`}>
         {features.map((feature, idx) => (
           <li key={idx} className="flex gap-1 items-center">
             <CiCircleCheck />
@@ -40,6 +40,8 @@ const CardAvailableCar = ({ car, view }) => {
           </li>
         ))}
       </ul>
+
+      
       <Link to={`/car/${car._id}`} className={` btn bg-primary rounded-sm text-white hover:text-black ${view ? 'w-full ': ''}`}>Book Now</Link>
     </div>
   );
