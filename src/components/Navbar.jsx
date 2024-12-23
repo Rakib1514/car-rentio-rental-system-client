@@ -19,6 +19,11 @@ const Navbar = () => {
           Add Car
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/available-cars" className="btn btn-outline">
+          Available Cars
+        </NavLink>
+      </li>
     </>
   );
 

@@ -59,9 +59,10 @@ const AddCar = () => {
   
         axios.post("/cars", carInfo)
         .then((response) => {
+          form.resetFields();
           alert("Car added successfully");
           console.log(response.data);
-          form.resetFields();
+          
         })
         .catch((error) => {
           console.error("Error adding car:", error);
@@ -116,6 +117,7 @@ const AddCar = () => {
           <Form.Item label="Features" name="features">
             <Select
               mode="multiple"
+              
               allowClear
               style={{
                 width: "100%",

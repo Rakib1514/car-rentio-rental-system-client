@@ -4,31 +4,37 @@ import Home from "../pages/homePage/Home";
 import CarDetails from "../pages/car-details/CarDetails";
 import Register from "../pages/authentication/Register";
 import AddCar from "../pages/add-car/AddCar";
+import AvailableCars from "../pages/available-cars/availableCars";
 // import axios from "axios";
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout/>,
+    element: <MainLayout />,
     children: [
       {
         index: true,
-        element: <Home/>
+        element: <Home />,
       },
       {
-        path: 'add-car',
-        element: <AddCar/>,
+        path: "add-car",
+        element: <AddCar />,
       },
       {
-        path: 'car/:id',
-        element: <CarDetails/>,
-        loader: ({params}) => fetch(`http://localhost:5000/car/${params.id}`)
+        path: "available-cars",
+        element: <AvailableCars />,
+        loader: () => fetch("http://localhost:5000/cars?available=true"),
       },
       {
-        path: '/register',
-        element: <Register/>
-      }
-    ]
+        path: "car/:id",
+        element: <CarDetails />,
+        loader: ({ params }) => fetch(`http://localhost:5000/car/${params.id}`),
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+    ],
   },
 ]);
 
