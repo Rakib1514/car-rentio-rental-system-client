@@ -1,10 +1,12 @@
-import { Form, Input, InputNumber, Radio, Select, Button } from "antd";
+import { Form, Input, InputNumber, Radio, Select, Button, Upload } from "antd";
 import useAuth from "../../hooks/useAuth";
+import { PlusOutlined } from "@ant-design/icons";
+import axios from "axios";
 
 const AddCar = () => {
   const { TextArea } = Input;
-
-  const {user} = useAuth();
+  const { user } = useAuth();
+  const [form] = Form.useForm();
 
   const options = [
     { label: "GPS", value: "GPS" },
@@ -27,17 +29,54 @@ const AddCar = () => {
     { label: "Navigation System", value: "Navigation System" },
   ];
 
-  const onFinish = (values) => {
-    const carInfo = {
-      ...values,
-      carOwner: user.uid,
-      // we will get time stamp in milliseconds. We can convert it to date using new Date(timePosted)
-      timePosted: new Date().getTime(), 
-      bookingStatus: false,
-      bookingCount: 0,
-    };
-    console.log(carInfo);
+  const normFile = (e) => {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e?.fileList;
   };
+
+  const onFinish = (values) => {
+    const formData = new FormData();
+    formData.append("image", values.image[0].originFileObj);
+  
+    axios.post(
+      "https://api.imgbb.com/1/upload?key=070385361e57f4b40f93e79281fa6460",
+      formData
+    )
+    .then((imgbbResponse) => {
+      if (imgbbResponse.data.success) {
+        const imageUrl = imgbbResponse.data.data.url;
+  
+        const carInfo = {
+          ...values,
+          carOwner: user.uid,
+          timePosted: new Date().getTime(),
+          bookingStatus: false,
+          bookingCount: 0,
+          image: imageUrl,
+        };
+  
+        axios.post("/cars", carInfo)
+        .then((response) => {
+          alert("Car added successfully");
+          console.log(response.data);
+          form.resetFields();
+        })
+        .catch((error) => {
+          console.error("Error adding car:", error);
+          alert("There was an error adding the car.");
+        });
+      } else {
+        alert("Failed to upload image to ImgBB");
+      }
+    })
+    .catch((error) => {
+      console.error("Error uploading image to ImgBB:", error);
+      alert("There was an error uploading the image.");
+    });
+  };
+  
 
   return (
     <>
@@ -88,13 +127,13 @@ const AddCar = () => {
 
           {/* Availability */}
           <Form.Item label="Availability" name="availability">
-            <Radio.Group defaultValue={true}>
+            <Radio.Group>
               <Radio value={true}> Available </Radio>
               <Radio value={false}> Unavailable </Radio>
             </Radio.Group>
           </Form.Item>
-           {/* Location */}
-           <Form.Item label="Location " name="location">
+          {/* Location */}
+          <Form.Item label="Location " name="location">
             <Input />
           </Form.Item>
 
@@ -103,8 +142,28 @@ const AddCar = () => {
             <TextArea rows={4} />
           </Form.Item>
 
+          {/* Upload file */}
+          <Form.Item
+            label="Image"
+            name="image"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+          >
+            <Upload
+              action="/upload"
+              listType="picture-card"
+              accept="image/*"
+              maxCount={1}
+            >
+              <button style={{ border: 0, background: "none" }} type="button">
+                <PlusOutlined />
+                <div style={{ marginTop: 8 }}>Upload</div>
+              </button>
+            </Upload>
+          </Form.Item>
+
           {/* Submit Button */}
-          <Form.Item wrapperCol={{ offset: 10, span: 14 }}>
+          <Form.Item>
             <Button type="primary" htmlType="submit">
               Add Car for Rent
             </Button>

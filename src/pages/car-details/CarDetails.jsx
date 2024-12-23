@@ -7,7 +7,7 @@ const CarDetails = () => {
 
   // const {user} = useAuth();
 
-  const { carModel, availability, dailyRentalPrice, features, description } =
+  const { carModel, availability, rentPrice, features, description, image } =
     car;
 
   // TODO: need to add collection of review get from server side {reviews, car}
@@ -18,14 +18,20 @@ const CarDetails = () => {
         <div className="text-center md:w-1/2 lg:text-left p-6">
           <h1 className="text-5xl font-bold space-y-4">
             {carModel}{" "}
-            <span className="badge bg-primary text-white py-4 font-openSans">
+            <span
+              className={`badge ${
+                availability ? "bg-green-700" : "bg-red-700"
+              } text-white py-4 font-openSans`}
+            >
               {availability ? "Available" : "Unavailable"}
             </span>
           </h1>
-          <p>
-            <span className="font-semibold text-2xl">${dailyRentalPrice}</span>{" "}
-            /Day
-          </p>
+          <div className="flex items-center  gap-8 my-4">
+            <p>
+              <span className="font-semibold text-2xl">${rentPrice}</span> /Day
+            </p>
+            <button className="btn bg-primary text-white">Book Now</button>
+          </div>
           {/* todo: add icons for good looking */}
           <div className="my-4 text-left">
             <p className=" font-semibold">Features</p>
@@ -42,16 +48,16 @@ const CarDetails = () => {
             <h2 className=" font-semibold">Description</h2>
             <p>{description}</p>
           </div>
-          {/* <p>{user? "user ase": " nai"}</p> */}
         </div>
 
         <div className="card bg-base-200 md:w-1/2 shrink-0 rounded-l-xl rounded-none">
+          <div>
             <img
-              src="https://i.ibb.co.com/jy1SRb6/Yellow-car.webp"
+              src={image}
               alt=""
               className="h-full w-full object-cover rounded-l-xl"
             />
-          
+          </div>
         </div>
       </div>
     </div>
