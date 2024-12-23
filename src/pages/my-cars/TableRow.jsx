@@ -1,17 +1,27 @@
 import PropTypes from "prop-types";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import UpdateCar from "./UpdateCar";
+import { useState } from "react";
+import axios from "axios";
 
-const TableRow = ({ car }) => {
-  const { rentPrice,availability,timePosted,carModel,image } = car;
+const TableRow = ({ car, setRefresh, refresh }) => {
+  const { rentPrice, availability, timePosted, carModel, image } = car;
+  const day = new Date(timePosted).getDate();
+  const month = new Date(timePosted).getMonth() + 1;
+  const year = new Date(timePosted).getFullYear();
+  const postedDate = `${day}/${month}/${year}`;
 
-  const day  = new Date(timePosted).getDate();
-  const month  = new Date(timePosted).getMonth()+1;
-  const year  = new Date(timePosted).getFullYear();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const postedDate = `${day}/${month}/${year}`
+  // setIsModalOpen(false);
+  const handleOk = (values) => {
+    console.log(values);
+    axios.patch(`/update-car/${car._id}`, values).then((res) => {
+      console.log(res.data);
+      setRefresh(refresh+1);
+    });
+  };
 
-  
-  
   return (
     <tr>
       <td></td>
@@ -33,23 +43,42 @@ const TableRow = ({ car }) => {
         <span className="font-bold">$ {rentPrice}</span>
       </td>
       <td>
-        <span className={`badge badge-sm ${availability ? 'bg-green-100':'bg-red-100'}`}>
-          {availability ? 'Available': 'Unavailable'}
+        <span
+          className={`badge badge-sm ${
+            availability ? "bg-green-100" : "bg-red-100"
+          }`}
+        >
+          {availability ? "Available" : "Unavailable"}
         </span>
       </td>
       <td>
         <p>{postedDate}</p>
       </td>
       <td>
-        <button className="p-2 mr-2 hover:scale-110 bg-primary text-white"><FaEdit/></button>
-        <button className="p-2 mr-2 hover:scale-110 bg-red-800 text-white"><FaTrash/></button>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="p-2 mr-2 hover:scale-110 bg-primary text-white"
+        >
+          <FaEdit />
+        </button>
+        <button className="p-2 mr-2 hover:scale-110 bg-red-800 text-white">
+          <FaTrash />
+        </button>
       </td>
+      <UpdateCar
+        car={car}
+        handleOk={handleOk}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
     </tr>
   );
 };
 
 TableRow.propTypes = {
   car: PropTypes.object,
+  setRefresh: PropTypes.func,
+  refresh: PropTypes.number,
 };
 
 export default TableRow;

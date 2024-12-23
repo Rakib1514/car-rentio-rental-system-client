@@ -26,7 +26,7 @@ const SignIn = ({ setIsModalOpen, isModalOpen }) => {
   return (
     <>
       <Modal
-        title="Basic Modal"
+        title="Sign in"
         open={isModalOpen}
         footer={null}
         onCancel={() => setIsModalOpen(false)}

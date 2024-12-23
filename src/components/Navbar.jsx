@@ -15,20 +15,24 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/add-car" className="btn btn-outline">
-          Add Car
-        </NavLink>
-      </li>
-      <li>
         <NavLink to="/available-cars" className="btn btn-outline">
           Available Cars
         </NavLink>
       </li>
-      <li>
-        <NavLink to={`/my-cars/${user?.uid}`} className="btn btn-outline">
-          My Cars
-        </NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/add-car" className="btn btn-outline">
+              Add Car
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={`/my-cars/${user?.uid}`} className="btn btn-outline">
+              My Cars
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -89,10 +93,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      <SignIn
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-      />
+      <SignIn isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </div>
   );
 };

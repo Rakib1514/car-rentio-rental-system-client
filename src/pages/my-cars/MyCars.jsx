@@ -5,6 +5,7 @@ import TableRow from "./TableRow";
 
 const MyCars = () => {
   const [myCarsData, setMyCarsData] = useState();
+  const [refresh, setRefresh] = useState(1);
 
   const { uid } = useParams();
 
@@ -12,7 +13,7 @@ const MyCars = () => {
     axios.get(`/cars?myCar=${uid}`).then((res) => {
       setMyCarsData(res.data);
     });
-  }, [uid]);
+  }, [uid, refresh]);
 
   return (
     <div className="w-11/12">
@@ -42,7 +43,10 @@ const MyCars = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {myCarsData && myCarsData.map((car) => <TableRow key={car._id} car={car} />)}
+              {myCarsData &&
+                myCarsData.map((car) => (
+                  <TableRow key={car._id} car={car} setRefresh={setRefresh} refresh={refresh}/>
+                ))}
             </tbody>
           </table>
         </div>
