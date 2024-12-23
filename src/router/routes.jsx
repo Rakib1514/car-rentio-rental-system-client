@@ -5,7 +5,8 @@ import CarDetails from "../pages/car-details/CarDetails";
 import Register from "../pages/authentication/Register";
 import AddCar from "../pages/add-car/AddCar";
 import AvailableCars from "../pages/available-cars/availableCars";
-// import axios from "axios";
+import MyCars from "../pages/my-cars/MyCars";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -18,7 +19,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "add-car",
-        element: <AddCar />,
+        element: <PrivateRoute><AddCar /></PrivateRoute>,
+      },
+      {
+        path: "my-cars/:uid",
+        element: <PrivateRoute><MyCars /></PrivateRoute>,
       },
       {
         path: "available-cars",

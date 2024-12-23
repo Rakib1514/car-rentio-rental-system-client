@@ -10,7 +10,7 @@ const RecentCarCard = ({ car }) => {
 
   return (
     <Link to={`/car/${car._id}`} className="">
-      <div className="card bg-base-100 hover:shadow-xl hover:scale-[1.02] transition-transform border border-base-300">
+      <div className="card bg-base-100 hover:shadow-xl hover:scale-[1.02] transition-transform border border-base-300 rounded-sm">
         <figure className="border-b-2">
           <img
             src={image}

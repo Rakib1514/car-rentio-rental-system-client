@@ -1,11 +1,15 @@
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const { signUpUser, updateUserProfile, setLoading } = useAuth();
+  const { signUpUser, updateUserProfile, setLoading, user } = useAuth();
 
   const navigate = useNavigate();
+  
+  if (user) {
+    return <Navigate to={"/"} />;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,7 +19,6 @@ const Register = () => {
     signUpUser(data.email, data.password)
       .then((result) => {
         if (result.user) {
-          
           updateUserProfile({
             displayName: data.displayName,
             photoURL: data.photoURL,
@@ -32,9 +35,7 @@ const Register = () => {
                 navigate("/");
               });
             alert("Profile Updated");
-            
           });
-          
         }
       })
       .catch((error) => {

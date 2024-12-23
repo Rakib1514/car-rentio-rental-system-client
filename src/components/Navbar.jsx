@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { useState } from "react";
+import {  useState } from "react";
 import SignIn from "../pages/authentication/SignIn";
 
 const Navbar = () => {
@@ -24,8 +24,15 @@ const Navbar = () => {
           Available Cars
         </NavLink>
       </li>
+      <li>
+        <NavLink to={`/my-cars/${user?.uid}`} className="btn btn-outline">
+          My Cars
+        </NavLink>
+      </li>
     </>
   );
+
+  // const {open, handleClickOpen, handleClose}  = useContext(GContext);
 
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
