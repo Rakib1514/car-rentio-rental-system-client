@@ -1,14 +1,19 @@
 const Footer = () => {
-
   // TODO: Add your company information
-  
+
   return (
     <footer className="footer footer-center bg-base-200 text-base-content rounded p-10">
+      <div className="">
+        <img
+          src="https://i.ibb.co.com/xfY2N89/Pngtree-auto-logo-car-4236175.png"
+          alt=""
+        />
+        <h2 className="text-3xl font-semibold font-openSans">Car-Rentio</h2>
+      </div>
       <nav className="grid grid-flow-col gap-4">
         <a className="link link-hover">About us</a>
         <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
+        <a className="link link-hover">News Subscribe</a>
       </nav>
       <nav>
         <div className="grid grid-flow-col gap-4">
@@ -49,8 +54,8 @@ const Footer = () => {
       </nav>
       <aside>
         <p>
-          Copyright © {new Date().getFullYear()} - All right reserved by ACME
-          Industries Ltd
+          Copyright © {new Date().getFullYear()} - All right reserved by
+          CAR-RENTIO
         </p>
       </aside>
     </footer>

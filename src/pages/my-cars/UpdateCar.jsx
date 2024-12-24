@@ -27,6 +27,7 @@ const options = [
 const UpdateCar = ({ isModalOpen, setIsModalOpen, handleOk, car }) => {
   return (
     <>
+    
       <Modal
         footer={false}
         title="Update Car Details"

@@ -1,13 +1,12 @@
-import { Form, Input, InputNumber, Radio, Select, Button, Upload } from "antd";
+import { Form, Input, InputNumber, Radio, Select, Button } from "antd";
 import useAuth from "../../hooks/useAuth";
-import { PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { hotToastSuccess } from "../../utils";
 
 const AddCar = () => {
   const { TextArea } = Input;
   const { user } = useAuth();
-  const [form] = Form.useForm();
   const navigate = useNavigate();
 
   const options = [
@@ -31,54 +30,25 @@ const AddCar = () => {
     { label: "Navigation System", value: "Navigation System" },
   ];
 
-  const normFile = (e) => {
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
-  };
-
   const onFinish = (values) => {
-    const formData = new FormData();
-    formData.append("image", values.image[0].originFileObj);
+    const carInfo = {
+      ...values,
+      carOwner: user.uid,
+      timePosted: new Date().getTime(),
+      bookingStatus: false,
+      bookingCount: 0,
+    };
 
     axios
-      .post(
-        "https://api.imgbb.com/1/upload?key=070385361e57f4b40f93e79281fa6460",
-        formData
-      )
-      .then((imgbbResponse) => {
-        if (imgbbResponse.data.success) {
-          const imageUrl = imgbbResponse.data.data.url;
-
-          const carInfo = {
-            ...values,
-            carOwner: user.uid,
-            timePosted: new Date().getTime(),
-            bookingStatus: false,
-            bookingCount: 0,
-            image: imageUrl,
-          };
-
-          axios
-            .post("/cars", carInfo)
-            .then((response) => {
-              form.resetFields();
-              alert("Car added successfully");
-              navigate(`/my-cars/${user?.uid}`);
-              console.log(response.data);
-            })
-            .catch((error) => {
-              console.error("Error adding car:", error);
-              alert("There was an error adding the car.");
-            });
-        } else {
-          alert("Failed to upload image to ImgBB");
+      .post("/cars", carInfo)
+      .then((res) => {
+        if (res.data.insertedId) {
+          hotToastSuccess("Car added successfully");
+          navigate(`/my-cars/${user?.uid}`);
         }
       })
-      .catch((error) => {
-        console.error("Error uploading image to ImgBB:", error);
-        alert("There was an error uploading the image.");
+      .catch(() => {
+        alert("There was an error adding the car.");
       });
   };
 
@@ -103,7 +73,11 @@ const AddCar = () => {
           }}
         >
           {/* Car model */}
-          <Form.Item label="Car Model" name="carModel" required>
+          <Form.Item
+            label="Car Model"
+            name="carModel"
+            rules={[{ required: true, message: "Please enter car model" }]}
+          >
             <Input />
           </Form.Item>
 
@@ -111,18 +85,32 @@ const AddCar = () => {
           <Form.Item
             label="Vehicle Registration"
             name="registrationNumber"
-            required
+            rules={[
+              { required: true, message: "Please enter Vehicle reg number" },
+            ]}
           >
             <Input />
           </Form.Item>
 
           {/* Daily rent price */}
-          <Form.Item label="Daily Rent" name="rentPrice" required>
+          <Form.Item
+            label="Daily Rent"
+            name="rentPrice"
+            rules={[
+              { required: true, message: "Please enter Daily Rent price" },
+            ]}
+          >
             <InputNumber placeholder="e.g. $35" style={{ width: "100%" }} />
           </Form.Item>
 
           {/* Features */}
-          <Form.Item label="Features" name="features" required>
+          <Form.Item
+            label="Features"
+            name="features"
+            rules={[
+              { required: true, message: "Please select at least 1 feature" },
+            ]}
+          >
             <Select
               mode="multiple"
               allowClear
@@ -135,40 +123,49 @@ const AddCar = () => {
           </Form.Item>
 
           {/* Availability */}
-          <Form.Item label="Availability" name="availability" required>
+          <Form.Item
+            label="Availability"
+            name="availability"
+            rules={[
+              {
+                required: true,
+                message: "Please select Vehicle available or not",
+              },
+            ]}
+          >
             <Radio.Group>
               <Radio value={true}> Available </Radio>
               <Radio value={false}> Unavailable </Radio>
             </Radio.Group>
           </Form.Item>
           {/* Location */}
-          <Form.Item label="Location " name="location">
+          <Form.Item
+            label="Location "
+            name="location"
+            rules={[{ required: true, message: "Please enter area" }]}
+          >
             <Input />
           </Form.Item>
 
           {/* Description */}
-          <Form.Item label="Description" name="description">
-            <TextArea rows={4} />
+          <Form.Item
+            label="Description"
+            name="description"
+            rules={[{ required: true, message: "Please enter Description" }]}
+          >
+            <TextArea rows={4} maxLength={600} showCount/>
           </Form.Item>
 
           {/* Upload file */}
           <Form.Item
-            label="Image"
+            label="Image URL"
             name="image"
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
+            rules={[
+              { required: true, message: "Please enter image url" },
+              { type: "url", message: "Please enter a valid URL" },
+            ]}
           >
-            <Upload
-              action="/upload"
-              listType="picture-card"
-              accept="image/*"
-              maxCount={1}
-            >
-              <button style={{ border: 0, background: "none" }} type="button">
-                <PlusOutlined />
-                <div style={{ marginTop: 8 }}>Upload</div>
-              </button>
-            </Upload>
+            <Input type="url" />
           </Form.Item>
 
           {/* Submit Button */}

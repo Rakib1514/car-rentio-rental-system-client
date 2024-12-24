@@ -70,7 +70,14 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="font-bold text-xl font-openSans">Car-Rentio</a>
+          <div className="flex items-center relative">
+            <a className="font-bold text-xl font-openSans">Car-Rentio</a>
+            <img
+              src="https://i.ibb.co.com/xfY2N89/Pngtree-auto-logo-car-4236175.png"
+              alt=""
+              className="absolute translate-x-24 md:block hidden"
+            />
+          </div>
         </div>
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
