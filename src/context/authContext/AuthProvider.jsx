@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import AuthContext from "./AuthContext";
+import axios from "axios";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -28,8 +29,6 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  
-
   const signOutUser = () => {
     setLoading(true);
     return signOut(auth);
@@ -45,12 +44,24 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
-  
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-      setLoading(false);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+
+      if (currentUser?.uid) {
+        const user = { uid: currentUser.uid };
+
+        axios.post("/jwt", user, { withCredentials: true }).then((res) => {
+          console.log("signed", res.data);
+          setLoading(false);
+        });
+      } else {
+        axios.post("/sign-out", {}, { withCredentials: true }).then((res) => {
+          console.log("signed out", res.data);
+          setLoading(false);
+        });
+      }
     });
 
     return () => {

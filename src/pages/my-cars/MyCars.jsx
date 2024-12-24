@@ -22,7 +22,7 @@ const MyCars = () => {
 
   const { uid } = useParams();
   useEffect(() => {
-    axios.get(`/cars?myCar=${uid}`).then((res) => {
+    axios.get(`/cars/${uid}`, {withCredentials: true}).then((res) => {
       setInitData(res.data);
       setMyCarsData(res.data);
     });
