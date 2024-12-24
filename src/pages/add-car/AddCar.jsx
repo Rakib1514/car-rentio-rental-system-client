@@ -153,7 +153,7 @@ const AddCar = () => {
             name="description"
             rules={[{ required: true, message: "Please enter Description" }]}
           >
-            <TextArea rows={4} maxLength={600} showCount/>
+            <TextArea rows={4} maxLength={1000} showCount/>
           </Form.Item>
 
           {/* Upload file */}

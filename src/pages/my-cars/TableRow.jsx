@@ -4,6 +4,8 @@ import UpdateCar from "./UpdateCar";
 import { useState } from "react";
 import axios from "axios";
 import { hotToastSuccess } from "../../utils";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const TableRow = ({ car, setRefresh, refresh }) => {
   const { rentPrice, availability, timePosted, carModel, image } = car;
@@ -20,8 +22,33 @@ const TableRow = ({ car, setRefresh, refresh }) => {
       if (res.data.modifiedCount) {
         setRefresh(refresh + 1);
         setIsModalOpen(false);
-        hotToastSuccess('Updated Successfully')
+        hotToastSuccess("Updated Successfully");
       }
+    });
+  };
+
+  const handleDelete = (id) => {
+    axios.delete(`/delete-car/${id}`).then((res) => {
+      if(res.data.deletedCount){
+        hotToastSuccess("Car Removed");
+        setRefresh(refresh + 1);
+      }
+    });
+  };
+
+  const submit = (id) => {
+    confirmAlert({
+      title: "Confirm to Delete",
+      message: "Are you sure to Remove this?",
+      buttons: [
+        {
+          label: "Remove",
+          onClick: () => handleDelete(id),
+        },
+        {
+          label: "Cancel",
+        },
+      ],
     });
   };
 
@@ -65,7 +92,10 @@ const TableRow = ({ car, setRefresh, refresh }) => {
           >
             <FaEdit />
           </button>
-          <button className="p-2 mr-2 hover:scale-110 bg-red-800 text-white">
+          <button
+            onClick={() => submit(car._id)}
+            className="p-2 mr-2 hover:scale-110 bg-red-800 text-white"
+          >
             <FaTrash />
           </button>
         </td>

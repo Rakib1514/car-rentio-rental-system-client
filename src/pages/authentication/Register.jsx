@@ -1,22 +1,40 @@
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import GoogleSignIn from "./GoogleSignIn";
+import { useState } from "react";
 
 const Register = () => {
-  const { signUpUser, updateUserProfile, setLoading, user } = useAuth();
+  const [errorMsg, setErrorMsg] =useState('')
+  
+  const { signUpUser, updateUserProfile, setLoading, signOutUser } = useAuth();
 
   const navigate = useNavigate();
-  
-  if (user) {
-    return <Navigate to={"/"} />;
-  }
+
+  const minLengthRegex = /.{6,}/; 
+  const upperCaseRegex = /[A-Z]/; 
+  const lowerCaseRegex = /[a-z]/; 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
+    setErrorMsg("");
+
+    if (!minLengthRegex.test(data.password)) {
+      setErrorMsg("At least 6 characters long.");
+      return;
+    }
+    if (!upperCaseRegex.test(data.password)) {
+      setErrorMsg("At least one uppercase letter.");
+      return;
+    }
+    if (!lowerCaseRegex.test(data.password)) {
+      setErrorMsg("At least one lowercase letter.");
+      return;
+    }
+    
     signUpUser(data.email, data.password)
       .then((result) => {
         if (result.user) {
@@ -32,16 +50,16 @@ const Register = () => {
                 uid: result.user.uid,
               })
               .then(() => {
+                signOutUser();
                 setLoading(false);
-                navigate("/");
+                navigate("/sign-in");
               });
-            alert("Profile Updated");
           });
         }
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error.message);
+        setErrorMsg(error.message);
       });
   };
 
@@ -54,7 +72,7 @@ const Register = () => {
         </div>
 
         <div className="card bg-base-100 lg:w-1/2 w-full shrink-0 shadow-2xl">
-        <GoogleSignIn/>
+          <GoogleSignIn />
           <form onSubmit={handleSubmit} className="card-body">
             <div className="form-control Name">
               <label className="label">
@@ -74,7 +92,7 @@ const Register = () => {
                 <span className="label-text">Photo URL</span>
               </label>
               <input
-                type="link"
+                type="url"
                 name="photoURL"
                 placeholder="Photo URL"
                 className="input input-bordered"
@@ -106,9 +124,9 @@ const Register = () => {
                 required
               />
               <label className="label">
-                <a className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
+                {errorMsg && (
+                <p className="text-red-500 text-xs">{errorMsg}</p>
+              )}
               </label>
             </div>
 

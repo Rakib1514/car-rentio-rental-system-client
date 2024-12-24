@@ -7,6 +7,7 @@ import AddCar from "../pages/add-car/AddCar";
 import AvailableCars from "../pages/available-cars/availableCars";
 import MyCars from "../pages/my-cars/MyCars";
 import PrivateRoute from "./PrivateRoute";
+import SignInPage from "../pages/authentication/SignInPage";
 
 const routes = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/sign-in",
+        element: <SignInPage />,
       },
     ],
   },

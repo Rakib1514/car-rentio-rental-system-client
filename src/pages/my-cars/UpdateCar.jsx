@@ -27,7 +27,6 @@ const options = [
 const UpdateCar = ({ isModalOpen, setIsModalOpen, handleOk, car }) => {
   return (
     <>
-    
       <Modal
         footer={false}
         title="Update Car Details"
@@ -63,7 +62,7 @@ const UpdateCar = ({ isModalOpen, setIsModalOpen, handleOk, car }) => {
             label="Vehicle Registration"
             name="registrationNumber"
             rules={[
-              { required: true, message: "Please enter vehicle registration" },
+              { required: true, message: "Please enter Vehicle reg number" },
             ]}
           >
             <Input />
@@ -74,7 +73,7 @@ const UpdateCar = ({ isModalOpen, setIsModalOpen, handleOk, car }) => {
             label="Daily Rent"
             name="rentPrice"
             rules={[
-              { required: true, message: "Please enter daily rent price" },
+              { required: true, message: "Please enter Daily Rent price" },
             ]}
           >
             <InputNumber placeholder="e.g. $35" style={{ width: "100%" }} />
@@ -85,7 +84,7 @@ const UpdateCar = ({ isModalOpen, setIsModalOpen, handleOk, car }) => {
             label="Features"
             name="features"
             rules={[
-              { required: true, message: "Please select at least one feature" },
+              { required: true, message: "Please select at least 1 feature" },
             ]}
           >
             <Select
@@ -103,7 +102,12 @@ const UpdateCar = ({ isModalOpen, setIsModalOpen, handleOk, car }) => {
           <Form.Item
             label="Availability"
             name="availability"
-            rules={[{ required: true, message: "Please select availability" }]}
+            rules={[
+              {
+                required: true,
+                message: "Please select Vehicle available or not",
+              },
+            ]}
           >
             <Radio.Group>
               <Radio value={true}> Available </Radio>
@@ -115,21 +119,26 @@ const UpdateCar = ({ isModalOpen, setIsModalOpen, handleOk, car }) => {
           <Form.Item
             label="Location"
             name="location"
-            rules={[
-              { required: true, message: "Please enter the car location" },
-            ]}
+            rules={[{ required: true, message: "Please enter area" }]}
           >
             <Input />
           </Form.Item>
 
           {/* Image URL*/}
-          <Form.Item label="Image URL" name="image">
-            <Input />
+          <Form.Item
+            label="Image URL"
+            name="image"
+            rules={[
+              { required: true, message: "Please enter image url" },
+              { type: "url", message: "Please enter a valid URL" },
+            ]}
+          >
+            <Input type="url" />
           </Form.Item>
 
           {/* Description */}
-          <Form.Item label="Description" name="description">
-            <TextArea rows={4} />
+          <Form.Item label="Description" name="description"  rules={[{ required: true, message: "Please enter Description" }]}>
+          <TextArea rows={4} maxLength={1000} showCount/>
           </Form.Item>
 
           {/* Submit Button */}

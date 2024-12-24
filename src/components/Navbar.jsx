@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import SignIn from "../pages/authentication/SignIn";
@@ -47,7 +47,7 @@ const Navbar = () => {
       <div className="navbar bg-base-100 w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -91,12 +91,15 @@ const Navbar = () => {
               </span>
             </p>
           ) : (
-            <a
-              onClick={showModal}
-              className="font-semibold hover:border-b hover:border-black cursor-pointer"
-            >
-              Sign-in | Register
-            </a>
+            <div className=" flex gap-2">
+              <a
+                onClick={showModal}
+                className="font-semibold hover:border-b hover:border-black cursor-pointer join"
+              >
+                Sign-in |
+              </a>
+              <Link to={'/register'} className="font-semibold hover:border-b hover:border-black cursor-pointer join">Register</Link>
+            </div>
           )}
         </div>
       </div>

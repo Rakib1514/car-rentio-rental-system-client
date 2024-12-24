@@ -2,15 +2,16 @@ import useAuth from "../../hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const GoogleSignIn = ({ setIsModalOpen }) => {
   const { signInWithGoogle } = useAuth();
+  const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
         if (result.user) {
-          setIsModalOpen(false);
           axios
             .post("/users", {
               displayName: result.user.displayName,
@@ -18,7 +19,9 @@ const GoogleSignIn = ({ setIsModalOpen }) => {
               photoURL: result.user.photoURL,
               uid: result.user.uid,
             })
-            .then((res) => alert(res.data));
+            .then(() => {});
+          navigate("/");
+          setIsModalOpen(false);
         }
       })
       .catch((error) => {
