@@ -4,32 +4,39 @@ import { useParams } from "react-router-dom";
 import TableRow from "./TableRow";
 import { FaSortNumericDown, FaSortNumericDownAlt } from "react-icons/fa";
 import NoCarAdded from "./NoCarAdded";
+import { useQuery } from "@tanstack/react-query";
 
 const MyCars = () => {
   const [refresh, setRefresh] = useState(1);
-  const [initData, setInitData] = useState([]);
-  const [myCarsData, setMyCarsData] = useState([]);
-
-  const [rentFilter, setRentFilter] = useState(false);
-
-  const handleRentSort = () => {
-    const sorted = [...initData].sort((a, b) => {
-      return rentFilter ? a.rentPrice - b.rentPrice : b.rentPrice - a.rentPrice;
-    });
-    setRentFilter(!rentFilter);
-    setMyCarsData(sorted);
-  };
+  // const [initData, setInitData] = useState([]);
 
   const { uid } = useParams();
-  useEffect(() => {
-    axios.get(`/cars/${uid}`, {withCredentials: true}).then((res) => {
-      setInitData(res.data);
-      setMyCarsData(res.data);
-    });
-  }, [uid, refresh]);
 
-  if(!initData.length > 0){
-    return <NoCarAdded/>
+  const { data: myCarsData, isLoading,refetch } = useQuery({
+    queryKey: ["myCars"],
+    queryFn: async () => {
+      const res = await axios.get(`/cars/${uid}`, { withCredentials: true });
+      return res.data;
+    },
+  });
+
+  useEffect(()=>{
+    refetch()
+  },[refetch, refresh])
+
+  // useEffect(() => {
+  //   axios.get(`/cars/${uid}`, { withCredentials: true }).then((res) => {
+  //     setInitData(res.data);
+  //     setMyCarsData(res.data);
+  //   });
+  // }, [uid, refresh]);
+
+  if (isLoading) {
+    return <h2>Loading ....</h2>;
+  }
+
+  if (!myCarsData.length > 0) {
+    return <NoCarAdded />;
   }
 
   return (
@@ -54,12 +61,12 @@ const MyCars = () => {
                 <th>Name</th>
                 <th className="flex justify-between">
                   <span>Daily Rental Price</span>{" "}
-                  <span onClick={handleRentSort} className="hover:scale-105">
+                  <span  className="hover:scale-105">
                     <FaSortNumericDown
-                      className={`text-[1rem] ${rentFilter && "hidden"}`}
+                      className={`text-[1rem]`}
                     />
                     <FaSortNumericDownAlt
-                      className={`text-[1rem] ${rentFilter || "hidden"}`}
+                      className={`text-[1rem] `}
                     />
                   </span>
                 </th>

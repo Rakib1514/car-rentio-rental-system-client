@@ -1,16 +1,44 @@
+import { useState } from "react";
 import { FaCarSide } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
-// import useAuth from "../../hooks/useAuth";
+import ModalBooking from "./ModalBooking";
+import useAuth from "../../hooks/useAuth";
 
 const CarDetails = () => {
   const car = useLoaderData();
-
-  // const {user} = useAuth();
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { carModel, availability, rentPrice, features, description, image } =
     car;
+  const [timeString, setTimeString] = useState(null);
 
-  // TODO: need to add collection of review get from server side {reviews, car}
+  const onChange = (time, timeString) => {
+    setTimeString(timeString);
+  };
+
+  const {user} = useAuth();
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const [totalDay, setTotalDay] = useState(0);
+  
+  const handleBooking = (values) => {
+
+    const {startDate, endDate} =  values;
+      
+    setTotalDay(endDate.diff(startDate, 'days'));
+    
+    const bookingInfo = {
+      ...values,
+      timeString,
+      renter: user.uid,
+      carId: car._id,
+      bookingStatus: "pending",
+    };
+
+    // todo: booking count need to adjust 
+  };
 
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -30,7 +58,9 @@ const CarDetails = () => {
             <p>
               <span className="font-semibold text-2xl">${rentPrice}</span> /Day
             </p>
-            <button className="btn bg-primary text-white">Book Now</button>
+            <button onClick={showModal} className="btn bg-primary text-white">
+              Book Now
+            </button>
           </div>
           {/* todo: add icons for good looking */}
           <div className="my-4 text-left">
@@ -60,6 +90,14 @@ const CarDetails = () => {
           </div>
         </div>
       </div>
+      <ModalBooking
+        handleBooking={handleBooking}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        car={car}
+        onChange={onChange}
+        totalDay={totalDay}
+      />
     </div>
   );
 };

@@ -30,7 +30,7 @@ const GoogleSignIn = ({ setIsModalOpen }) => {
   };
 
   return (
-    <button onClick={handleGoogleSignIn} className="w-full btn my-8 ">
+    <button onClick={handleGoogleSignIn} className="w-full btn my-8 border border-gray-400">
       Sign in with Google
       <FcGoogle className="text-3xl" />
     </button>

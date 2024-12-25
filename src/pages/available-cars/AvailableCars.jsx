@@ -7,7 +7,6 @@ const AvailableCars = () => {
   const [view, setView] = useState(true);
 
   const availableCars =  useLoaderData();
-  console.log(availableCars);  
 
   return (
     <div className="w-11/12 mx-auto">

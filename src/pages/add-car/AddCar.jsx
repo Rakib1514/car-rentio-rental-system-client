@@ -169,7 +169,7 @@ const AddCar = () => {
           </Form.Item>
 
           {/* Submit Button */}
-          <Form.Item>
+          <Form.Item className="md:translate-x-32">
             <Button type="primary" htmlType="submit" className="w-full">
               Add Car for Rent
             </Button>

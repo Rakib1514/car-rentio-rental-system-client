@@ -84,7 +84,7 @@ const SignIn = ({ setIsModalOpen, isModalOpen }) => {
 
           <Form.Item label={null}>
             <Button type="primary" htmlType="submit">
-              Submit
+              Sign in
             </Button>
           </Form.Item>
           <Link
@@ -95,6 +95,13 @@ const SignIn = ({ setIsModalOpen, isModalOpen }) => {
             Don&apos;t have an account? Register here
           </Link>
         </Form>
+
+        <div className="flex items-center justify-center mt-4">
+          <div className="border-gray-400 border-b w-full "></div>
+          <span className="px-6">or</span>
+          <div className="border-gray-400 border-b w-full"></div>
+        </div>
+        
         <GoogleSignIn setIsModalOpen={setIsModalOpen} />
       </Modal>
     </>
