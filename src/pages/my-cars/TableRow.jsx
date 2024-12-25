@@ -38,8 +38,8 @@ const TableRow = ({ car, setRefresh, refresh, idx }) => {
 
   const submit = (id) => {
     confirmAlert({
-      title: "Confirm to Delete",
-      message: "Are you sure to Remove this?",
+      title: "Remove Car from Rent",
+      message: "Are you sure you want to remove this car from rent?",
       buttons: [
         {
           label: "Remove",

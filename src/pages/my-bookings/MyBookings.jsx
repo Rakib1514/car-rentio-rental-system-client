@@ -17,7 +17,9 @@ const MyBookings = () => {
   } = useQuery({
     queryKey: ["myBookings"],
     queryFn: async () => {
-      const res = await axios.get(`/my-bookings/${uid}`);
+      const res = await axios.get(`/my-bookings/${uid}`, {
+        withCredentials: true,
+      });
       return res.data;
     },
   });
@@ -36,13 +38,13 @@ const MyBookings = () => {
 
   return (
     <div className="w-11/12 mx-auto">
-      <div>
-        <h2 className="md:text-3xl text-xl font-bold text-center md:mt-8 font-openSans">
-          Section Heading
+      <div className="text-center space-y-2">
+        <h2 className="md:text-3xl text-xl font-bold md:mt-8 font-openSans">
+          Track and Manage Your Bookings
         </h2>
-        <p className="text-gray-600 text-center md:px-12">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-          deserunt rem perspiciatis est modi amet itaque{" "}
+        <p className="text-gray-600 md:px-12">
+          View and manage all your car bookings. Modify rental dates or cancel
+          bookings effortlessly.
         </p>
       </div>
 
@@ -61,14 +63,19 @@ const MyBookings = () => {
                 <th>Booking Status</th>
                 <th>Update</th>
                 <th>Cancel</th>
-
               </tr>
             </thead>
             <tbody>
               {/* row 1 */}
 
               {myBookingsData.map((booking, idx) => (
-                <BookingRow key={booking._id} idx={idx} booking={booking} setRefresh={setRefresh} refresh={refresh}/>
+                <BookingRow
+                  key={booking._id}
+                  idx={idx}
+                  booking={booking}
+                  setRefresh={setRefresh}
+                  refresh={refresh}
+                />
               ))}
             </tbody>
           </table>

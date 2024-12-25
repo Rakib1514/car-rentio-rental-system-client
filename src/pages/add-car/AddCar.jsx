@@ -55,9 +55,12 @@ const AddCar = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center ">
-        <h2 className="py-10 text-3xl font-semibold uppercase">
-          Add a car for Rent
+        <div className="py-10 text-center space-y-2">
+        <h2 className=" text-3xl font-semibold uppercase">
+          Add Your Car to Car-rentio Fleet
         </h2>
+        <p>Fill in the details below to list your car and start earning today!</p>
+        </div>
         <Form
           className="w-full px-6"
           onFinish={onFinish}
@@ -153,7 +156,7 @@ const AddCar = () => {
             name="description"
             rules={[{ required: true, message: "Please enter Description" }]}
           >
-            <TextArea rows={4} maxLength={1000} showCount/>
+            <TextArea rows={4} maxLength={1000} showCount />
           </Form.Item>
 
           {/* Upload file */}

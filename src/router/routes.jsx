@@ -10,7 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import SignInPage from "../pages/authentication/SignInPage";
 import MyBookings from "../pages/my-bookings/MyBookings";
 
-// https://carrentio.vercel.app
+
 
 const routes = createBrowserRouter([
   {
@@ -36,12 +36,12 @@ const routes = createBrowserRouter([
       {
         path: "available-cars",
         element: <AvailableCars />,
-        loader: () => fetch("https://carrentio.vercel.app/cars?available=true"),
+        loader: () => fetch("http://localhost:5000/cars?available=true"),
       },
       {
         path: "car/:id",
         element: <CarDetails />,
-        loader: ({ params }) => fetch(`https://carrentio.vercel.app/car/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/car/${params.id}`),
       },
       {
         path: "/register",

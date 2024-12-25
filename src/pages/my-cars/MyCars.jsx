@@ -39,11 +39,10 @@ const MyCars = () => {
     <div className="w-11/12 mx-auto">
       <div>
         <h2 className="md:text-3xl text-xl font-bold text-center md:mt-8 font-openSans">
-          Section Heading
+        Your Rental Listings
         </h2>
         <p className="text-gray-600 text-center md:px-12">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-          deserunt rem perspiciatis est modi amet itaque{" "}
+        Manage and track all the cars you've listed for rent. Update details, view status, or remove listings with ease.
         </p>
       </div>
       {/* My Cars Table */}

@@ -5,15 +5,15 @@ import GoogleSignIn from "./GoogleSignIn";
 import { useState } from "react";
 
 const Register = () => {
-  const [errorMsg, setErrorMsg] =useState('')
-  
+  const [errorMsg, setErrorMsg] = useState("");
+
   const { signUpUser, updateUserProfile, setLoading, signOutUser } = useAuth();
 
   const navigate = useNavigate();
 
-  const minLengthRegex = /.{6,}/; 
-  const upperCaseRegex = /[A-Z]/; 
-  const lowerCaseRegex = /[a-z]/; 
+  const minLengthRegex = /.{6,}/;
+  const upperCaseRegex = /[A-Z]/;
+  const lowerCaseRegex = /[a-z]/;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ const Register = () => {
       setErrorMsg("At least one lowercase letter.");
       return;
     }
-    
+
     signUpUser(data.email, data.password)
       .then((result) => {
         if (result.user) {
@@ -67,12 +67,21 @@ const Register = () => {
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row">
         <div className="text-center lg:w-1/2 w-full lg:text-left">
-          <h1 className="text-5xl font-bold">Create an Account now!</h1>
-          <p className="py-6">Provident cupiditate voluptatem et in.</p>
+          <h1 className="text-5xl font-bold">Join Car-Rentio Today</h1>
+          <p className="py-6">
+            Create your account and start your journey with seamless car
+            rentals.
+          </p>
         </div>
 
         <div className="card bg-base-100 lg:w-1/2 w-full shrink-0 shadow-2xl">
           <GoogleSignIn />
+          <div className="flex items-center justify-center">
+            <div className="border-gray-400 border-b w-full "></div>
+            <span className="px-6">or</span>
+            <div className="border-gray-400 border-b w-full"></div>
+          </div>
+          <p className="text-center px-2">Create an Account</p>
           <form onSubmit={handleSubmit} className="card-body">
             <div className="form-control Name">
               <label className="label">
@@ -124,9 +133,7 @@ const Register = () => {
                 required
               />
               <label className="label">
-                {errorMsg && (
-                <p className="text-red-500 text-xs">{errorMsg}</p>
-              )}
+                {errorMsg && <p className="text-red-500 text-xs">{errorMsg}</p>}
               </label>
             </div>
 

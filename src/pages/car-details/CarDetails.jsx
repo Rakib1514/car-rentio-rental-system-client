@@ -38,7 +38,8 @@ const CarDetails = () => {
       dailyRent: rentPrice,
       renter: user.uid,
       carId: car._id,
-      bookingStatus: "pending",
+      bookingStatus: "Confirmed",
+      timeOfBooking: new Date().getTime(),
     };
 
     axios.post("/my-bookings", bookingInfo)

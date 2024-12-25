@@ -24,10 +24,11 @@ const SignInPage = () => {
 
   return (
     <div className="py-12 md:w-1/2 mx-auto">
-      <div className="mb-12">
-        <h2 className="font-bold font-openSans md:text-3xl text-xl text-center">
-          Sign in
+      <div className="mb-12 text-center space-y-2">
+        <h2 className="font-bold font-openSans md:text-3xl text-xl">
+          Welcome Back to Car-Rentio!
         </h2>
+        <p>Sign in to manage your bookings, add cars, and explore exclusive deals.</p>
       </div>
       <Form
         name="basic"

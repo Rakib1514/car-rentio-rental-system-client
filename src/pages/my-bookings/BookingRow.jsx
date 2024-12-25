@@ -5,9 +5,12 @@ import { hotToastSuccess } from "../../utils";
 import UpdateBookingDate from "./UpdateBookingDate";
 import { SlCalender } from "react-icons/sl";
 import { FaTrashAlt } from "react-icons/fa";
-import { Button, message, Popconfirm } from "antd";
+import { Popconfirm } from "antd";
+import { useState } from "react";
 
 const BookingRow = ({ booking, idx, setRefresh, refresh }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const {
     carImage,
     carModel,
@@ -21,10 +24,13 @@ const BookingRow = ({ booking, idx, setRefresh, refresh }) => {
   const start = dayjs(startDate);
   const end = dayjs(endDate);
 
+  const newDateObj = {
+    startDate: start,
+    endDate: end,
+  };
+
   const startDateFormatted = start.format("DD/MM/YYYY");
   const endDateFormatted = end.format("DD/MM/YYYY");
-
-  // (totalDays * rentPrice) / 100) * 3
 
   const totalDays = end.diff(start, "days") + 1;
 
@@ -32,19 +38,28 @@ const BookingRow = ({ booking, idx, setRefresh, refresh }) => {
 
   const totalCost = totalDays * dailyRent + parseFloat(tax) + 3;
 
-  const handleUpdateBooking = (id) => {};
-
-  const handleCancel = (id) => {
-    axios.delete(`/my-bookings/${id}`).then((res) => {
-      if (res.data.deletedCount) {
-        hotToastSuccess("Reservation Canceled");
-        setRefresh(refresh + 1);
-      }
+  const handleUpdateBooking = (values) => {
+    console.log(values);
+    
+    
+    axios.patch(`/my-bookings/${_id}`, values).then((res) => {
+      console.log(res.data);
+      setRefresh(refresh+1);
+      hotToastSuccess("Reservation date updated");
+      setIsModalOpen(false)
     });
   };
 
-  
-
+  const handleCancel = (id) => {
+    axios
+      .patch(`/my-bookings/${id}`, { bookingStatus: "Canceled" })
+      .then((res) => {
+        if (res.data.modifiedCount || res.data.upsertedCount) {
+          hotToastSuccess("Reservation Canceled");
+          setRefresh(refresh + 1);
+        }
+      });
+  };
 
   return (
     <>
@@ -83,16 +98,16 @@ const BookingRow = ({ booking, idx, setRefresh, refresh }) => {
 
         <td className="capitalize">{bookingStatus}</td>
 
-        <td>
+        <td className={bookingStatus === "Canceled" && "hidden"}>
           <span
-            onClick={() => handleUpdateBooking(_id)}
+            onClick={() => setIsModalOpen(true)}
             className="border-b cursor-pointer hover:bg-white p-2 hover:text-black flex gap-2 font-semibold hover:scale-105"
           >
             Update <SlCalender />
           </span>
         </td>
 
-        <td>
+        <td className={bookingStatus === "Canceled" && "hidden"}>
           <Popconfirm
             title="Cancel Reservation"
             description="Are you certain you want to cancel this booking?"
@@ -106,7 +121,12 @@ const BookingRow = ({ booking, idx, setRefresh, refresh }) => {
           </Popconfirm>
         </td>
       </tr>
-      {/* <UpdateBookingDate/> */}
+      <UpdateBookingDate
+        newDateObj={newDateObj}
+        handleUpdateBooking={handleUpdateBooking}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
     </>
   );
 };
