@@ -83,7 +83,7 @@ const Navbar = () => {
             <img
               src="https://i.ibb.co.com/xfY2N89/Pngtree-auto-logo-car-4236175.png"
               alt=""
-              className="absolute translate-x-24 md:block hidden"
+              className="absolute translate-x-24 lg:block hidden"
             />
           </div>
         </div>
@@ -92,12 +92,14 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <p>
-              {user.displayName}{" "}
-              <span onClick={signOutUser} className="btn btn-link text-black">
-                Sign-out
-              </span>
-            </p>
+            <>
+              <p>
+                <span className="md:hidden">{user.displayName}</span>
+                <span onClick={signOutUser} className="btn btn-link text-black">
+                  Sign-out
+                </span>
+              </p>
+            </>
           ) : (
             <div className=" flex gap-2">
               <a
@@ -112,6 +114,22 @@ const Navbar = () => {
               >
                 Register
               </Link>
+            </div>
+          )}
+          {user && (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="user"
+                    src={user?.photoURL}
+                  />
+                </div>
+              </div>
             </div>
           )}
         </div>
