@@ -1,11 +1,27 @@
 import { useLoaderData } from "react-router-dom";
 import CardAvailableCar from "./CardAvailableCar";
 import { useState } from "react";
+import { FaList } from "react-icons/fa";
+import { IoGridSharp } from "react-icons/io5";
+
 
 const AvailableCars = () => {
   const [view, setView] = useState(true);
+  const initData = useLoaderData();
 
-  const availableCars = useLoaderData();
+  const [availableCars, setAvailableCars] = useState(initData);
+
+  const handleSearch = (e) => {
+    const initValue = e.target.value;
+
+    const value = initValue.toLowerCase();
+    
+    const filtered = initData.filter((car) => {
+      const carModel = car.carModel.toLowerCase();
+      return carModel.includes(value)
+    });
+    setAvailableCars(filtered)
+  };
 
   return (
     <div className="w-11/12 mx-auto">
@@ -21,12 +37,17 @@ const AvailableCars = () => {
           </p>
         </div>
         <div className="py-6 flex justify-between">
-          <div>
-            <button className="btn">sort</button>
+          <div className="form-control">
+            <input
+              type="text"
+              onChange={handleSearch}
+              placeholder="Search by Model Name"
+              className="input input-bordered w-24 md:w-auto"
+            />
           </div>
-          <div>
-            <button onClick={() => setView(!view)} className="btn">
-              Toggle
+          <div className="flex gap-4 items-center">
+            <button onClick={() => setView(!view)} className="btn bg-primary text-white text-xl hover:text-black hover:border hover:border-black">
+              <FaList className={view || "hidden"}/> <IoGridSharp  className={`${view && "hidden "}`} />
             </button>
             <button className="btn">filter</button>
           </div>
