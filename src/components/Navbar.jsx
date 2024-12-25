@@ -31,6 +31,14 @@ const Navbar = () => {
               My Cars
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to={`/my-bookings/${user?.uid}`}
+              className="btn btn-outline"
+            >
+              My Bookings
+            </NavLink>
+          </li>
         </>
       )}
     </>
@@ -98,7 +106,12 @@ const Navbar = () => {
               >
                 Sign-in |
               </a>
-              <Link to={'/register'} className="font-semibold hover:border-b hover:border-black cursor-pointer join">Register</Link>
+              <Link
+                to={"/register"}
+                className="font-semibold hover:border-b hover:border-black cursor-pointer join"
+              >
+                Register
+              </Link>
             </div>
           )}
         </div>

@@ -7,7 +7,7 @@ import { hotToastSuccess } from "../../utils";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
-const TableRow = ({ car, setRefresh, refresh }) => {
+const TableRow = ({ car, setRefresh, refresh, idx }) => {
   const { rentPrice, availability, timePosted, carModel, image } = car;
   const day = new Date(timePosted).getDate();
   const month = new Date(timePosted).getMonth() + 1;
@@ -54,8 +54,8 @@ const TableRow = ({ car, setRefresh, refresh }) => {
 
   return (
     <>
-      <tr>
-        <td></td>
+      <tr className={`hover:bg-primary hover:text-white duration-500 ease-in-out transition-all  ${idx%2 === 0 || "bg-slate-200"}`}>
+        <td>{idx+1}</td>
         <td>
           <div className="flex items-center gap-3">
             <div className="avatar">
@@ -114,6 +114,7 @@ TableRow.propTypes = {
   car: PropTypes.object,
   setRefresh: PropTypes.func,
   refresh: PropTypes.number,
+  idx: PropTypes.number,
 };
 
 export default TableRow;

@@ -10,7 +10,6 @@ const SignInPage = () => {
   const navigate = useNavigate();
 
   const onFinish = (values) => {
-    console.log("Success:", values);
     signInUser(values.email, values.password)
       .then((result) => {
         if (result.user) {

@@ -8,6 +8,9 @@ import AvailableCars from "../pages/available-cars/availableCars";
 import MyCars from "../pages/my-cars/MyCars";
 import PrivateRoute from "./PrivateRoute";
 import SignInPage from "../pages/authentication/SignInPage";
+import MyBookings from "../pages/my-bookings/MyBookings";
+
+// https://carrentio.vercel.app
 
 const routes = createBrowserRouter([
   {
@@ -25,6 +28,10 @@ const routes = createBrowserRouter([
       {
         path: "my-cars/:uid",
         element: <PrivateRoute><MyCars /></PrivateRoute>,
+      },
+      {
+        path: "my-bookings/:uid",
+        element: <PrivateRoute><MyBookings /></PrivateRoute>,
       },
       {
         path: "available-cars",

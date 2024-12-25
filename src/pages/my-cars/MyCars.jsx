@@ -2,17 +2,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TableRow from "./TableRow";
-import { FaSortNumericDown, FaSortNumericDownAlt } from "react-icons/fa";
+// import { FaSortNumericDown, FaSortNumericDownAlt } from "react-icons/fa";
 import NoCarAdded from "./NoCarAdded";
 import { useQuery } from "@tanstack/react-query";
 
 const MyCars = () => {
   const [refresh, setRefresh] = useState(1);
-  // const [initData, setInitData] = useState([]);
 
   const { uid } = useParams();
 
-  const { data: myCarsData, isLoading,refetch } = useQuery({
+  const {
+    data: myCarsData,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["myCars"],
     queryFn: async () => {
       const res = await axios.get(`/cars/${uid}`, { withCredentials: true });
@@ -20,16 +23,9 @@ const MyCars = () => {
     },
   });
 
-  useEffect(()=>{
-    refetch()
-  },[refetch, refresh])
-
-  // useEffect(() => {
-  //   axios.get(`/cars/${uid}`, { withCredentials: true }).then((res) => {
-  //     setInitData(res.data);
-  //     setMyCarsData(res.data);
-  //   });
-  // }, [uid, refresh]);
+  useEffect(() => {
+    refetch();
+  }, [refetch, refresh]);
 
   if (isLoading) {
     return <h2>Loading ....</h2>;
@@ -40,7 +36,7 @@ const MyCars = () => {
   }
 
   return (
-    <div className="w-11/12">
+    <div className="w-11/12 mx-auto">
       <div>
         <h2 className="md:text-3xl text-xl font-bold text-center md:mt-8 font-openSans">
           Section Heading
@@ -55,27 +51,23 @@ const MyCars = () => {
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead className="text-black">
+            <thead className="text-white bg-primary ">
               <tr>
                 <th></th>
                 <th>Name</th>
                 <th className="flex justify-between">
                   <span>Daily Rental Price</span>{" "}
-                  <span  className="hover:scale-105">
-                    <FaSortNumericDown
-                      className={`text-[1rem]`}
-                    />
-                    <FaSortNumericDownAlt
-                      className={`text-[1rem] `}
-                    />
+                  <span className="hover:scale-105">
+                    {/* <FaSortNumericDown className={`text-[1rem]`} />
+                    <FaSortNumericDownAlt className={`text-[1rem] `} /> */}
                   </span>
                 </th>
                 <th>Availability</th>
                 <th className="flex justify-between">
                   <span>Date Added</span>
                   <span className="hover:scale-105">
-                    <FaSortNumericDown className={`text-[1rem]`} />
-                    <FaSortNumericDownAlt className={`text-[1rem]`} />
+                    {/* <FaSortNumericDown className={`text-[1rem]`} /> */}
+                    {/* <FaSortNumericDownAlt className={`text-[1rem]`} /> */}
                   </span>
                 </th>
                 <th>Action</th>
@@ -84,12 +76,13 @@ const MyCars = () => {
             <tbody>
               {/* row 1 */}
               {myCarsData &&
-                myCarsData.map((car) => (
+                myCarsData.map((car, idx) => (
                   <TableRow
                     key={car._id}
                     car={car}
                     setRefresh={setRefresh}
                     refresh={refresh}
+                    idx={idx}
                   />
                 ))}
             </tbody>

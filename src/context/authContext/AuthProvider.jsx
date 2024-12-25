@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
         const user = { uid: currentUser.uid };
 
         axios.post("/jwt", user, { withCredentials: true }).then((res) => {
-          console.log("signed", res.data);
+          if("signed", res.data);
           setLoading(false);
         });
       } else {

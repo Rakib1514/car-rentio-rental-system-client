@@ -3,6 +3,8 @@ import { FaCarSide } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 import ModalBooking from "./ModalBooking";
 import useAuth from "../../hooks/useAuth";
+import axios from "axios";
+import { hotToastSuccess } from "../../utils";
 
 const CarDetails = () => {
   const car = useLoaderData();
@@ -24,7 +26,6 @@ const CarDetails = () => {
   const [totalDay, setTotalDay] = useState(0);
   
   const handleBooking = (values) => {
-
     const {startDate, endDate} =  values;
       
     setTotalDay(endDate.diff(startDate, 'days'));
@@ -32,10 +33,21 @@ const CarDetails = () => {
     const bookingInfo = {
       ...values,
       timeString,
+      carModel,
+      carImage: image,
+      dailyRent: rentPrice,
       renter: user.uid,
       carId: car._id,
       bookingStatus: "pending",
     };
+
+    axios.post("/my-bookings", bookingInfo)
+      .then(res => {
+        if(res.data.insertedId){
+          hotToastSuccess("Reserved. Happy Journey")
+        }
+        setIsModalOpen(false);
+      })
 
     // todo: booking count need to adjust 
   };
