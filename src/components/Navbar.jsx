@@ -51,7 +51,7 @@ const Navbar = () => {
   };
 
   if(loading){
-    return <div className="w-full h-20 skeleton" />
+    return <div className="w-full h-16 skeleton" />
   }
 
   return (

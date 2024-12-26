@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaCarSide, FaRegFile } from "react-icons/fa";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { ScrollRestoration, useLoaderData, useNavigate } from "react-router-dom";
 import ModalBooking from "./ModalBooking";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
@@ -60,6 +60,7 @@ const CarDetails = () => {
       <Helmet>
         <title>Car-Rantio | {carModel} </title>
       </Helmet>
+      <ScrollRestoration />
       <div className="w-11/12 mx-auto text-center py-10">
         <h2 className="text-xl font-semibold">
           Experience the Thrill of{" "}
