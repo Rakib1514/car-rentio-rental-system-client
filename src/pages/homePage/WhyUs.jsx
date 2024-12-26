@@ -1,9 +1,10 @@
-import {
-  FaCar,
-  FaDollarSign,
-  FaRegCalendarCheck,
-  FaHeadset,
-} from "react-icons/fa";
+import { FaCarSide } from "react-icons/fa";
+import { RiMoneyDollarCircleLine } from "react-icons/ri";
+import { VscServerProcess } from "react-icons/vsc";
+import { MdOutlineSupportAgent } from "react-icons/md";
+
+
+
 
 const WhyUs = () => {
   return (
@@ -12,26 +13,57 @@ const WhyUs = () => {
         Why Choose Car-Rentio?
       </h2>
       <div className="grid  grid-cols-2 lg:grid-cols-4 gap-8">
-        <div className="stateCard">
-          <FaCar className="text-6xl text-blue-500 mb-4" />
-          <h3>Wide Variety of Cars</h3>
-          <p>From budget-friendly options to luxury vehicles.</p>
+        <div>
+          <div
+            className="flex items-end h-52 border rounded shadow-lg  bg-center bg-cover"
+            style={{
+              backgroundImage:
+                "url('https://i.ibb.co.com/4Nr3vLP/1714414840224.jpg')",
+            }}
+          >
+            <h3 className="font-bold p-4 bg-white rounded-t flex gap-2 items-center ">Wide Variety of Cars <FaCarSide /></h3>
+          </div>
+          <p className="mt-2">From budget-friendly options to luxury vehicles.</p>
         </div>
-        <div className="stateCard">
-          <FaDollarSign className="text-6xl text-green-500 mb-4" />
-          <h3>Affordable Prices</h3>
-          <p>Competitive daily rates you can count on.</p>
+        <div>
+          <div
+            className="flex items-end border h-52 rounded shadow-lg  bg-center bg-cover"
+            style={{
+              backgroundImage:
+                "url('https://i.ibb.co.com/W3LzYCq/afordable-price.jpg')",
+            }}
+          >
+            <h3 className="font-bold p-4 bg-white rounded-t flex items-center gap-2">Affordable Prices <RiMoneyDollarCircleLine /></h3>
+          </div>
+          <p className="mt-2">Competitive daily rates you can count on.</p>
         </div>
-        <div className="stateCard">
-          <FaRegCalendarCheck className="text-6xl text-yellow-500 mb-4" />
-          <h3>Easy Booking Process</h3>
-          <p>Seamlessly book your ride in just a few clicks.</p>
+        <div>
+          <div
+            className="flex items-end h-52 border rounded shadow-lg  bg-center bg-cover"
+            style={{
+              backgroundImage:
+                "url('https://i.ibb.co.com/MVPGtcf/Screenshot-2024-12-26-221811.png')",
+            }}
+          >
+            <h3 className="font-bold p-4 bg-white rounded-t flex items-center gap-2">Easy Booking Process <VscServerProcess /></h3>
+          </div>
+          <p className="mt-2">Seamlessly book your ride in just a few clicks</p>
         </div>
-        <div className="stateCard">
-          <FaHeadset className="text-6xl text-red-500 mb-4" />
-          <h3>Customer Support</h3>
-          <p>24/7 assistance for all your queries.</p>
+        <div>
+          <div
+            className="flex items-end h-52 border rounded shadow-lg  bg-center bg-cover"
+            style={{
+              backgroundImage:
+                "url('https://i.ibb.co.com/FY6xTCC/customer-service-pretty-blonde-girl-white-shirt-with-laptop-headset-talking-140725-164953.jpg')",
+            }}
+          >
+            <h3 className="font-bold p-4 bg-white rounded-t flex items-center gap-2">Customer Support <MdOutlineSupportAgent /></h3>
+          </div>
+          <p className="mt-2">24/7 assistance for all your queries.</p>
         </div>
+
+        
+        
       </div>
     </div>
   );

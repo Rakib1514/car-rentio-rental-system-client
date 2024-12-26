@@ -35,7 +35,7 @@ const CardAvailableCar = ({ car, view }) => {
               <h3 className="md:text-xl font-bold font-openSans">{carModel}</h3>
               <div
                 className={`badge text-white ${
-                  availability ? "bg-green-700" : "bg-red-700"
+                  availability ? "bg-primary" : "bg-red-700"
                 }`}
               >
                 {availability ? "Available" : "unavailable"}

@@ -34,7 +34,7 @@ const offers = [
 const SpecialOffers = () => {
   return (
     <div className="w-11/12 mx-auto my-12">
-      <h2 className="text-3xl font-bold text-center mb-6 ">Special Offers</h2>
+      <h2 className="text-3xl font-bold text-center mb-6">Special Offers</h2>
       <p className="text-gray-600 text-center mb-8">
         Grab these exclusive deals and make your journey more affordable and
         luxurious.
@@ -43,18 +43,19 @@ const SpecialOffers = () => {
         {offers.map((offer, idx) => (
           <motion.div
             key={offer.id}
-            className="bg-white shadow-lg rounded-lg p-6 border-l-4 border-primary"
+            className="bg-gradient-to-r from-gray-100 via-white to-gray-100 shadow-lg rounded-lg p-6 border-l-4 border-primary relative overflow-hidden"
             initial={{ x: idx % 2 === 0 ? -100 : 100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 100 }}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)" }}
           >
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-primary via-transparent opacity-5 pointer-events-none"></div>
             <h3 className="text-xl font-semibold mb-2 text-black">
               {offer.title}
             </h3>
             <p className="text-gray-600 mb-4">{offer.description}</p>
-            <button className="btn text-white px-4 py-2 rounded-md hover:bg-primary bg-primary">
+            <button className="btn text-white px-4 py-2 rounded-md hover:bg-primary-light bg-primary">
               {offer.buttonText}
             </button>
           </motion.div>
