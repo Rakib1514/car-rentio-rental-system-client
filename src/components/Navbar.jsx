@@ -4,37 +4,37 @@ import { useState } from "react";
 import SignIn from "../pages/authentication/SignIn";
 
 const Navbar = () => {
-  const { user, signOutUser } = useAuth();
+  const { user, signOutUser, loading } = useAuth();
 
   // Navbar Button Links
   const links = (
     <>
       <li>
-        <NavLink to="/" className="btn btn-outline">
+        <NavLink to="/" className="navLinkBtn">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/available-cars" className="btn btn-outline">
+        <NavLink to="/available-cars" className="navLinkBtn">
           Available Cars
         </NavLink>
       </li>
       {user && (
         <>
           <li>
-            <NavLink to="/add-car" className="btn btn-outline">
+            <NavLink to="/add-car" className="navLinkBtn">
               Add Car
             </NavLink>
           </li>
           <li>
-            <NavLink to={`/my-cars/${user?.uid}`} className="btn btn-outline">
+            <NavLink to={`/my-cars/${user?.uid}`} className="navLinkBtn">
               My Cars
             </NavLink>
           </li>
           <li>
             <NavLink
               to={`/my-bookings/${user?.uid}`}
-              className="btn btn-outline"
+              className="navLinkBtn"
             >
               My Bookings
             </NavLink>
@@ -50,8 +50,12 @@ const Navbar = () => {
     setIsModalOpen(true);
   };
 
+  if(loading){
+    return <div className="w-full h-20 skeleton" />
+  }
+
   return (
-    <div>
+    <nav>
       <div className="navbar bg-base-100 w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -72,6 +76,7 @@ const Navbar = () => {
               </svg>
             </div>
             <ul
+            id="dropNavLink"
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
@@ -88,7 +93,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden md:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul id="navLinks" className="menu menu-horizontal px-1  transition-all duration-300">{links}</ul>
         </div>
         <div className="navbar-end">
           {user ? (
@@ -135,7 +140,7 @@ const Navbar = () => {
         </div>
       </div>
       <SignIn isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-    </div>
+    </nav>
   );
 };
 

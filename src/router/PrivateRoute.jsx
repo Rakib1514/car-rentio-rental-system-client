@@ -1,12 +1,13 @@
 import { Navigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import PropTypes from "prop-types";
+import Loading from "../pages/loading-page/loading";
 
 const PrivateRoute = ({ children }) => {
   const { loading, user } = useAuth();
 
   if (loading) {
-    return <h2>Loading.....</h2>;
+    return <Loading/>
   }
 
   if (!user) {

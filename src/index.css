@@ -13,8 +13,15 @@
   @apply text-xl font-semibold mb-2;
 }
 
-.active{
+#navLinks .active{
   @apply bg-primary text-white;
+}
+#dropNavLink .active{
+  @apply bg-primary text-white;
+}
+
+.navLinkBtn {
+  @apply font-semibold  border-b-4 border-primary rounded-none hover:bg-primary hover:text-white ease-in-out mx-2
 }
 
 

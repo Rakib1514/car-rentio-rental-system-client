@@ -16,6 +16,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import { Helmet } from "react-helmet";
+import Loading from "../loading-page/loading";
 
 const MyBookings = () => {
   const [refresh, setRefresh] = useState(1);
@@ -41,7 +42,7 @@ const MyBookings = () => {
   }, [refetch, refresh]);
 
   if (isLoading) {
-    return <h2>Loading ....</h2>;
+    return <Loading/>
   }
 
   if (!myBookingsData.length > 0) {
@@ -101,7 +102,7 @@ const MyBookings = () => {
       <div className="min-h-svh">
         {/* Section heading */}
         <div className="text-center mb-6 space-y-4">
-          <h2 className=" text-3xl font-bold font-openSans">
+          <h2 className=" md:text-3xl text-xl font-bold font-openSans">
             Daily Rental Rates by Car Model You Rented
           </h2>
           <p>Explore daily rental rates for each model you Rented.</p>

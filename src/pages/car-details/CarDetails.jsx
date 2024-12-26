@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { hotToastSuccess } from "../../utils";
 import { BsTools } from "react-icons/bs";
+import { Helmet } from "react-helmet";
 
 const CarDetails = () => {
   const car = useLoaderData();
@@ -56,6 +57,9 @@ const CarDetails = () => {
 
   return (
     <div className=" bg-base-200 min-h-screen">
+      <Helmet>
+        <title>Car-Rantio | {carModel} </title>
+      </Helmet>
       <div className="w-11/12 mx-auto text-center py-10">
         <h2 className="text-xl font-semibold">
           Experience the Thrill of{" "}
