@@ -11,13 +11,11 @@ import SignInPage from "../pages/authentication/SignInPage";
 import MyBookings from "../pages/my-bookings/MyBookings";
 import Error from "../pages/Error-page/Error";
 
-
-
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <Error/>,
+    errorElement: <Error />,
     children: [
       {
         index: true,
@@ -25,25 +23,38 @@ const routes = createBrowserRouter([
       },
       {
         path: "add-car",
-        element: <PrivateRoute><AddCar /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AddCar />
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-cars/:uid",
-        element: <PrivateRoute><MyCars /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyCars />
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-bookings/:uid",
-        element: <PrivateRoute><MyBookings /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyBookings />
+          </PrivateRoute>
+        ),
       },
       {
         path: "available-cars",
         element: <AvailableCars />,
-        loader: () => fetch("http://localhost:5000/cars?available=true"),
+        loader: () => fetch("https://carrentio.vercel.app/cars?available=true"),
       },
       {
         path: "car/:id",
         element: <CarDetails />,
-        loader: ({ params }) => fetch(`http://localhost:5000/car/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://carrentio.vercel.app/car/${params.id}`),
       },
       {
         path: "/register",

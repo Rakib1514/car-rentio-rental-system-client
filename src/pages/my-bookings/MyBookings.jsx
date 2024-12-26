@@ -15,6 +15,7 @@ import {
   Rectangle,
   CartesianGrid,
 } from "recharts";
+import { Helmet } from "react-helmet";
 
 const MyBookings = () => {
   const [refresh, setRefresh] = useState(1);
@@ -49,6 +50,9 @@ const MyBookings = () => {
 
   return (
     <div className="w-11/12 mx-auto">
+      <Helmet>
+        <title>Car-Rantio | Manage Bookings</title>
+      </Helmet>
       <div className="text-center space-y-2">
         <h2 className="md:text-3xl text-xl font-bold md:mt-8 font-openSans">
           Track and Manage Your Bookings

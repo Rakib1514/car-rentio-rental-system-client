@@ -3,6 +3,7 @@ import CardAvailableCar from "./CardAvailableCar";
 import { useState } from "react";
 import { FaList } from "react-icons/fa";
 import { IoGridSharp } from "react-icons/io5";
+import { Helmet } from "react-helmet";
 
 const AvailableCars = () => {
   const [view, setView] = useState(true);
@@ -22,7 +23,9 @@ const AvailableCars = () => {
 
   const handleSort = (value) => {
     if (value === "high") {
-      const sortedHigh = [...initData].sort((a, b) => b.rentPrice - a.rentPrice);
+      const sortedHigh = [...initData].sort(
+        (a, b) => b.rentPrice - a.rentPrice
+      );
       setAvailableCars(sortedHigh);
     } else if (value === "low") {
       const sortedLow = [...initData].sort((a, b) => a.rentPrice - b.rentPrice);
@@ -32,6 +35,9 @@ const AvailableCars = () => {
 
   return (
     <div className="w-11/12 mx-auto">
+      <Helmet>
+        <title>Car-Rantio | Available Cars</title>
+      </Helmet>
       {/* for heading and buttons */}
       <div>
         <div className="space-y-4 border-b border-gray-400 pb-4">
@@ -77,7 +83,7 @@ const AvailableCars = () => {
                 <li onClick={() => handleSort("high")}>
                   <a>Rent hight to low</a>
                 </li>
-                <li onClick={()=> handleSort('low')}>
+                <li onClick={() => handleSort("low")}>
                   <a>Rent low to high</a>
                 </li>
               </ul>

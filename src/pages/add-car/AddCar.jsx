@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { hotToastSuccess } from "../../utils";
+import { Helmet } from "react-helmet";
 
 const AddCar = () => {
   const { TextArea } = Input;
@@ -54,6 +55,9 @@ const AddCar = () => {
 
   return (
     <>
+    <Helmet>
+        <title>Car-Rantio | Add Your Car</title>
+      </Helmet>
       <div className="flex flex-col justify-center items-center ">
         <div className="py-10 text-center space-y-2">
         <h2 className=" text-3xl font-semibold uppercase">

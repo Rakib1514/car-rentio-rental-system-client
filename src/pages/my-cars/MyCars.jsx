@@ -6,6 +6,7 @@ import TableRow from "./TableRow";
 import NoCarAdded from "./NoCarAdded";
 import { useQuery } from "@tanstack/react-query";
 import { FaSort } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const MyCars = () => {
   const [refresh, setRefresh] = useState(1);
@@ -43,6 +44,9 @@ const MyCars = () => {
 
   return (
     <div className="w-11/12 mx-auto">
+      <Helmet>
+        <title>Car-Rantio | Manage Cars</title>
+      </Helmet>
       <div>
         <h2 className="md:text-3xl text-xl font-bold text-center md:mt-8 font-openSans">
           Your Rental Listings
