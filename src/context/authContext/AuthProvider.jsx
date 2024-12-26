@@ -16,9 +16,8 @@ import axios from "axios";
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
   const googleProvider = new GoogleAuthProvider();
-
+  
   const signUpUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -38,7 +37,6 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return updateProfile(auth.currentUser, userDetails);
   };
-
   // !Sign in with google
   const signInWithGoogle = () => {
     setLoading(true);
@@ -53,7 +51,7 @@ const AuthProvider = ({ children }) => {
         const user = { uid: currentUser.uid };
 
         axios.post("/jwt", user, { withCredentials: true }).then((res) => {
-          if("signed", res.data);
+          if (("signed", res.data));
           setLoading(false);
         });
       } else {
@@ -63,12 +61,10 @@ const AuthProvider = ({ children }) => {
         });
       }
     });
-
     return () => {
       unsubscribe();
     };
   }, []);
-
   const authInfo = {
     signUpUser,
     signInUser,
@@ -79,7 +75,6 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     setLoading,
   };
-
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

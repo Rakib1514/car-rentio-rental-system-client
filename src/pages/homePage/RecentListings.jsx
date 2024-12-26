@@ -17,7 +17,10 @@ const RecentListings = () => {
         <h2 className=" text-3xl font-semibold capitalize">
           Recent Listings – Fresh Rides Await!
         </h2>
-        <p>Discover the latest cars added to Car-Rentio and book your perfect ride today.</p>
+        <p>
+          Discover the latest cars added to Car-Rentio and book your perfect
+          ride today.
+        </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {cars.map((car) => (

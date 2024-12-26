@@ -6,21 +6,23 @@ import { useState } from "react";
 
 const Register = () => {
   const [errorMsg, setErrorMsg] = useState("");
-
   const { signUpUser, updateUserProfile, setLoading, signOutUser } = useAuth();
-
   const navigate = useNavigate();
 
+  // Password validation
   const minLengthRegex = /.{6,}/;
   const upperCaseRegex = /[A-Z]/;
   const lowerCaseRegex = /[a-z]/;
 
+  // SignUp Submit Handle
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const formData = new FormData(e.target);
+
     const data = Object.fromEntries(formData.entries());
 
-    setErrorMsg("");
+    setErrorMsg(""); //Error Message Clear
 
     if (!minLengthRegex.test(data.password)) {
       setErrorMsg("At least 6 characters long.");
@@ -73,7 +75,6 @@ const Register = () => {
             rentals.
           </p>
         </div>
-
         <div className="card bg-base-100 lg:w-1/2 w-full shrink-0 shadow-2xl">
           <GoogleSignIn />
           <div className="flex items-center justify-center">
@@ -95,7 +96,6 @@ const Register = () => {
                 required
               />
             </div>
-
             <div className="form-control photoUrl">
               <label className="label">
                 <span className="label-text">Photo URL</span>
@@ -108,7 +108,6 @@ const Register = () => {
                 required
               />
             </div>
-
             <div className="form-control email">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -136,7 +135,6 @@ const Register = () => {
                 {errorMsg && <p className="text-red-500 text-xs">{errorMsg}</p>}
               </label>
             </div>
-
             <div className="form-control mt-6">
               <button className="btn bg-primary text-white font-openSans tracking-wider hover:text-black">
                 Register

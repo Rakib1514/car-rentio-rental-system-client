@@ -7,9 +7,11 @@ import { hotToastError } from "../../utils";
 
 const SignIn = ({ setIsModalOpen, isModalOpen }) => {
   const { signInUser, setLoading } = useAuth();
+  const [form] = Form.useForm(); //antd form clear
 
   const navigate = useNavigate();
 
+  // handle sign in
   const onFinish = (values) => {
     signInUser(values.email, values.password)
       .then((result) => {
@@ -24,7 +26,7 @@ const SignIn = ({ setIsModalOpen, isModalOpen }) => {
         hotToastError(error.message ||"Password or email incorrect, please try again");
       });
   };
-  const [form] = Form.useForm();
+  
 
   return (
     <>

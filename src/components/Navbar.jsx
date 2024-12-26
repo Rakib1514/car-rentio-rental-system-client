@@ -5,7 +5,6 @@ import SignIn from "../pages/authentication/SignIn";
 
 const Navbar = () => {
   const { user, signOutUser, loading } = useAuth();
-
   // Navbar Button Links
   const links = (
     <>
@@ -32,10 +31,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to={`/my-bookings/${user?.uid}`}
-              className="navLinkBtn"
-            >
+            <NavLink to={`/my-bookings/${user?.uid}`} className="navLinkBtn">
               My Bookings
             </NavLink>
           </li>
@@ -43,17 +39,13 @@ const Navbar = () => {
       )}
     </>
   );
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const showModal = () => {
     setIsModalOpen(true);
   };
-
-  if(loading){
-    return <div className="w-full h-16 skeleton" />
+  if (loading) {
+    return <div className="w-full h-16 skeleton" />;
   }
-
   return (
     <nav>
       <div className="navbar bg-base-100 w-11/12 mx-auto">
@@ -76,7 +68,7 @@ const Navbar = () => {
               </svg>
             </div>
             <ul
-            id="dropNavLink"
+              id="dropNavLink"
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
@@ -93,7 +85,12 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden md:flex">
-          <ul id="navLinks" className="menu menu-horizontal px-1  transition-all duration-300">{links}</ul>
+          <ul
+            id="navLinks"
+            className="menu menu-horizontal px-1  transition-all duration-300"
+          >
+            {links}
+          </ul>
         </div>
         <div className="navbar-end">
           {user ? (
@@ -129,10 +126,7 @@ const Navbar = () => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  <img
-                    alt="user"
-                    src={user?.photoURL}
-                  />
+                  <img alt="user" src={user?.photoURL} />
                 </div>
               </div>
             </div>

@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { FaCarSide, FaRegFile } from "react-icons/fa";
-import { ScrollRestoration, useLoaderData, useNavigate } from "react-router-dom";
+import {
+  ScrollRestoration,
+  useLoaderData,
+  useNavigate,
+} from "react-router-dom";
 import ModalBooking from "./ModalBooking";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
@@ -25,7 +29,7 @@ const CarDetails = () => {
     setIsModalOpen(true);
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [totalDay, setTotalDay] = useState(0);
 
@@ -49,7 +53,7 @@ const CarDetails = () => {
           console.log(res.data);
         });
         hotToastSuccess("Reserved. Happy Journey");
-        navigate(`/my-bookings/${user.uid}`)
+        navigate(`/my-bookings/${user.uid}`);
       }
       setIsModalOpen(false);
     });

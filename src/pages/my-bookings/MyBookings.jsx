@@ -42,7 +42,7 @@ const MyBookings = () => {
   }, [refetch, refresh]);
 
   if (isLoading) {
-    return <Loading/>
+    return <Loading />;
   }
 
   if (!myBookingsData.length > 0) {

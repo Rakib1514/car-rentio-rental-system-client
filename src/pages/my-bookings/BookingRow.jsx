@@ -40,13 +40,12 @@ const BookingRow = ({ booking, idx, setRefresh, refresh }) => {
 
   const handleUpdateBooking = (values) => {
     console.log(values);
-    
-    
+
     axios.patch(`/my-bookings/${_id}`, values).then((res) => {
       console.log(res.data);
-      setRefresh(refresh+1);
+      setRefresh(refresh + 1);
       hotToastSuccess("Reservation date updated");
-      setIsModalOpen(false)
+      setIsModalOpen(false);
     });
   };
 

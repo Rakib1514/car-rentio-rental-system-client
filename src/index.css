@@ -1,27 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-.stateCard{
+.stateCard {
   @apply flex flex-col items-center text-center p-4 border rounded-lg shadow-lg;
 }
 
-.stateCard h3{
+.stateCard h3 {
   @apply text-xl font-semibold mb-2;
 }
 
-#navLinks .active{
+#navLinks .active {
   @apply bg-primary text-white;
 }
-#dropNavLink .active{
+#dropNavLink .active {
   @apply bg-primary text-white;
 }
 
 .navLinkBtn {
-  @apply font-semibold  border-b-4 border-primary rounded-none hover:bg-primary hover:text-white ease-in-out mx-2
+  @apply font-semibold  border-b-4 border-primary rounded-none hover:bg-primary hover:text-white ease-in-out mx-2;
 }
-
-

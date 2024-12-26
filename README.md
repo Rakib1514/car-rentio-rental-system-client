@@ -19,7 +19,7 @@ Welcome to **Car-Rentio**, an intuitive and efficient car rental system designed
 
 - **Frontend**: React.js, React Router, Tailwind CSS, Framer Motion, daisyUI, ant design, dayjs, react confirm alert, recharts, swiper.
 - **Backend**: Node.js, Express.js, MongoDB, cors, dotenv, cookie-parser
-- **Authentication**: JWT (JSON Web Tokens)
+- **Authentication**: Firebase,
 - **APIs**: Axios for handling HTTP requests
 
 

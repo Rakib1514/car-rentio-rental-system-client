@@ -3,7 +3,7 @@ import { CiCircleCheck } from "react-icons/ci";
 import { Link } from "react-router-dom";
 
 const CardAvailableCar = ({ car, view }) => {
-  // availability, description,
+  
   const { carModel, rentPrice, features, image, availability, bookingCount } =
     car;
 

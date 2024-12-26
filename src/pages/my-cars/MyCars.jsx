@@ -48,7 +48,7 @@ const MyCars = () => {
   }, [refetch, refresh, sortValue]);
 
   if (isLoading) {
-    return <Loading />
+    return <Loading />;
   }
 
   if (!myCarsData.length > 0) {

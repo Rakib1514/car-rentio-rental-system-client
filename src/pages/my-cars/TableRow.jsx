@@ -8,7 +8,8 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 const TableRow = ({ car, setRefresh, refresh, idx }) => {
-  const { rentPrice, availability, timePosted, carModel, image, bookingCount } = car;
+  const { rentPrice, availability, timePosted, carModel, image, bookingCount } =
+    car;
   const day = new Date(timePosted).getDate();
   const month = new Date(timePosted).getMonth() + 1;
   const year = new Date(timePosted).getFullYear();

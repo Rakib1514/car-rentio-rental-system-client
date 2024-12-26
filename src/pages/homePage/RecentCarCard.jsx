@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 
 const RecentCarCard = ({ car }) => {
-  const { carModel, image, availability, rentPrice, timePosted, bookingCount } = car;
+  const { carModel, image, availability, rentPrice, timePosted, bookingCount } =
+    car;
 
   const postedTime = new Date(timePosted);
   const timeAgo = formatDistanceToNow(postedTime, { addSuffix: true });
@@ -37,7 +38,7 @@ const RecentCarCard = ({ car }) => {
               <span>Day</span>
             </div>
             <div>
-              <p>Posted {timeAgo.replace('about', '')}</p>
+              <p>Posted {timeAgo.replace("about", "")}</p>
             </div>
           </div>
 

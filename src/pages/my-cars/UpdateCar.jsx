@@ -137,8 +137,12 @@ const UpdateCar = ({ isModalOpen, setIsModalOpen, handleOk, car }) => {
           </Form.Item>
 
           {/* Description */}
-          <Form.Item label="Description" name="description"  rules={[{ required: true, message: "Please enter Description" }]}>
-          <TextArea rows={4} maxLength={1000} showCount/>
+          <Form.Item
+            label="Description"
+            name="description"
+            rules={[{ required: true, message: "Please enter Description" }]}
+          >
+            <TextArea rows={4} maxLength={1000} showCount />
           </Form.Item>
 
           {/* Submit Button */}

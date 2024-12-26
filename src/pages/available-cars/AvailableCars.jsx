@@ -8,7 +8,6 @@ import { Helmet } from "react-helmet";
 const AvailableCars = () => {
   const [view, setView] = useState(true);
   const initData = useLoaderData();
-
   const [availableCars, setAvailableCars] = useState(initData);
 
   const handleSearch = (e) => {

@@ -39,7 +39,6 @@ const AddCar = () => {
       bookingStatus: false,
       bookingCount: 0,
     };
-
     axios
       .post("/cars", carInfo)
       .then((res) => {
@@ -55,15 +54,17 @@ const AddCar = () => {
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Car-Rantio | Add Your Car</title>
       </Helmet>
       <div className="flex flex-col justify-center items-center ">
         <div className="py-10 text-center space-y-2">
-        <h2 className=" text-3xl font-semibold uppercase">
-          Add Your Car to Car-rentio Fleet
-        </h2>
-        <p>Fill in the details below to list your car and start earning today!</p>
+          <h2 className=" text-3xl font-semibold uppercase">
+            Add Your Car to Car-rentio Fleet
+          </h2>
+          <p>
+            Fill in the details below to list your car and start earning today!
+          </p>
         </div>
         <Form
           className="w-full px-6"
@@ -174,7 +175,6 @@ const AddCar = () => {
           >
             <Input type="url" />
           </Form.Item>
-
           {/* Submit Button */}
           <Form.Item className="md:translate-x-32">
             <Button type="primary" htmlType="submit" className="w-full">
