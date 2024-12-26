@@ -9,6 +9,7 @@ import MyCars from "../pages/my-cars/MyCars";
 import PrivateRoute from "./PrivateRoute";
 import SignInPage from "../pages/authentication/SignInPage";
 import MyBookings from "../pages/my-bookings/MyBookings";
+import Error from "../pages/Error-page/Error";
 
 
 
@@ -16,6 +17,7 @@ const routes = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <Error/>,
     children: [
       {
         index: true,

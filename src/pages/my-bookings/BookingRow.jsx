@@ -101,7 +101,7 @@ const BookingRow = ({ booking, idx, setRefresh, refresh }) => {
         <td className={bookingStatus === "Canceled" && "hidden"}>
           <span
             onClick={() => setIsModalOpen(true)}
-            className="border-b cursor-pointer hover:bg-white p-2 hover:text-black flex gap-2 font-semibold hover:scale-105"
+            className="border-b cursor-pointer bg-primary bg-opacity-20 p-2 hover:text-black flex gap-2 font-semibold hover:scale-105"
           >
             Update <SlCalender />
           </span>
@@ -115,7 +115,7 @@ const BookingRow = ({ booking, idx, setRefresh, refresh }) => {
             okText="Yes. Cancel Reservation"
             cancelText="No"
           >
-            <span className="border-b cursor-pointer hover:bg-red-200 p-2 hover:text-black flex gap-2 font-semibold hover:scale-105">
+            <span className="border-b cursor-pointer bg-red-200 p-2 hover:text-black flex gap-2 font-semibold hover:scale-105">
               Cancel <FaTrashAlt />
             </span>
           </Popconfirm>
