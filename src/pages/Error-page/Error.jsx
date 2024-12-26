@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import carCrash from "../../../public/carCrash.json";
+import carCrash from "../../assets/carCrash.json";
 import Navbar from "../../components/Navbar";
 import { Link } from "react-router-dom";
 

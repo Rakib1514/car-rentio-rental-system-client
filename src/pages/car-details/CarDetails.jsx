@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaCarSide, FaRegFile } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import ModalBooking from "./ModalBooking";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
@@ -24,13 +24,13 @@ const CarDetails = () => {
     setIsModalOpen(true);
   };
 
+  const navigate = useNavigate()
+
   const [totalDay, setTotalDay] = useState(0);
 
   const handleBooking = (values) => {
     const { startDate, endDate } = values;
-
     setTotalDay(endDate.diff(startDate, "days"));
-
     const bookingInfo = {
       ...values,
       timeString,
@@ -42,13 +42,13 @@ const CarDetails = () => {
       bookingStatus: "Confirmed",
       timeOfBooking: new Date().getTime(),
     };
-
     axios.post("/my-bookings", bookingInfo).then((res) => {
       if (res.data.insertedId) {
         axios.patch(`/booking-count/${car._id}/inc`).then((res) => {
           console.log(res.data);
         });
         hotToastSuccess("Reserved. Happy Journey");
+        navigate(`/my-bookings/${user.uid}`)
       }
       setIsModalOpen(false);
     });

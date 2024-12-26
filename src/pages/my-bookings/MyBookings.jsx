@@ -4,6 +4,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BookingRow from "./BookingRow";
 import NoBooking from "./NoBooking";
+import {
+  BarChart,
+  Bar,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Rectangle,
+  CartesianGrid,
+} from "recharts";
 
 const MyBookings = () => {
   const [refresh, setRefresh] = useState(1);
@@ -79,6 +90,49 @@ const MyBookings = () => {
               ))}
             </tbody>
           </table>
+        </div>
+      </div>
+
+      {/* Rechart */}
+      <div className="min-h-svh">
+        {/* Section heading */}
+        <div className="text-center mb-6 space-y-4">
+          <h2 className=" text-3xl font-bold font-openSans">
+            Daily Rental Rates by Car Model You Rented
+          </h2>
+          <p>Explore daily rental rates for each model you Rented.</p>
+        </div>
+
+        {/* Chart */}
+        <div className="h-[50svh] w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              width={500}
+              height={300}
+              data={myBookingsData}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis
+                dataKey="carModel"
+                tickFormatter={(value) => value.split(" ")[0]}
+              />
+              <YAxis dataKey="dailyRent" />
+              <Tooltip />
+              <Legend />
+              <Bar
+                dataKey="dailyRent"
+                fill="#197BFF"
+                activeBar={<Rectangle fill="#719CD5" stroke="blue" />}
+              />
+              {/* <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} /> */}
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>

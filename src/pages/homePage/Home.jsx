@@ -1,5 +1,7 @@
 import Banner from "./Banner";
 import RecentListings from "./RecentListings";
+import SpecialOffers from "./SpecialOffers";
+import UserTestimonialStatic from "./UserTestimonialStatic";
 import WhyUs from "./WhyUs";
 
 const Home = () => {
@@ -10,6 +12,8 @@ const Home = () => {
       <Banner/>
       <WhyUs/>
       <RecentListings/>
+      <SpecialOffers/>
+      <UserTestimonialStatic/>
     </div>
   );
 };
