@@ -8,7 +8,7 @@ import { MdOutlineSupportAgent } from "react-icons/md";
 
 const WhyUs = () => {
   return (
-    <div className="container mx-auto py-12 px-4 md:px-0">
+    <div className="w-11/12 mx-auto py-12 px-4 md:px-0">
       <h2 className="text-3xl font-bold text-center mb-8">
         Why Choose Car-Rentio?
       </h2>
