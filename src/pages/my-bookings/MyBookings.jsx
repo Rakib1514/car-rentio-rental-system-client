@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BookingRow from "./BookingRow";
@@ -17,11 +16,14 @@ import {
 } from "recharts";
 import { Helmet } from "react-helmet";
 import Loading from "../loading-page/loading";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyBookings = () => {
   const [refresh, setRefresh] = useState(1);
 
   const { uid } = useParams();
+
+  const axiosSecure = useAxiosSecure();
 
   const {
     data: myBookingsData,
@@ -30,9 +32,7 @@ const MyBookings = () => {
   } = useQuery({
     queryKey: ["myBookings"],
     queryFn: async () => {
-      const res = await axios.get(`/my-bookings/${uid}`, {
-        withCredentials: true,
-      });
+      const res = await axiosSecure.get(`/my-bookings/${uid}`);
       return res.data;
     },
   });

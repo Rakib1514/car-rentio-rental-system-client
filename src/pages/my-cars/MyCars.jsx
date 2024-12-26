@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TableRow from "./TableRow";
@@ -19,6 +18,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import Loading from "../loading-page/loading";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyCars = () => {
   const [refresh, setRefresh] = useState(1);
@@ -28,6 +28,8 @@ const MyCars = () => {
   const [carData, setCarData] = useState([]);
   const [sortValue, setSortValue] = useState("");
 
+  const axiosSecure = useAxiosSecure();
+
   const {
     data: myCarsData,
     isLoading,
@@ -35,9 +37,7 @@ const MyCars = () => {
   } = useQuery({
     queryKey: ["myCars"],
     queryFn: async () => {
-      const res = await axios.get(`/cars/${uid}?sortValue=${sortValue}`, {
-        withCredentials: true,
-      });
+      const res = await axiosSecure.get(`/cars/${uid}?sortValue=${sortValue}`);
       setCarData(res.data);
       return res.data;
     },
