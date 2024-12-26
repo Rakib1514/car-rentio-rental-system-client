@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 const MainLayout = () => {
   return (
-    <div className="font-roboto">
+    <div className="font-roboto overflow-x-hidden">
       <header>
       <Toaster />
         <nav>
