@@ -5,11 +5,16 @@ import TableRow from "./TableRow";
 // import { FaSortNumericDown, FaSortNumericDownAlt } from "react-icons/fa";
 import NoCarAdded from "./NoCarAdded";
 import { useQuery } from "@tanstack/react-query";
+import { FaSort } from "react-icons/fa";
 
 const MyCars = () => {
   const [refresh, setRefresh] = useState(1);
 
   const { uid } = useParams();
+
+  const [carData, setCarData] = useState([]);
+  const [sortValue, setSortValue] = useState("");
+
 
   const {
     data: myCarsData,
@@ -18,14 +23,15 @@ const MyCars = () => {
   } = useQuery({
     queryKey: ["myCars"],
     queryFn: async () => {
-      const res = await axios.get(`/cars/${uid}`, { withCredentials: true });
+      const res = await axios.get(`/cars/${uid}?sortValue=${sortValue}`, { withCredentials: true });
+      setCarData(res.data);
       return res.data;
     },
   });
 
   useEffect(() => {
     refetch();
-  }, [refetch, refresh]);
+  }, [refetch, refresh, sortValue]);
 
   if (isLoading) {
     return <h2>Loading ....</h2>;
@@ -39,10 +45,11 @@ const MyCars = () => {
     <div className="w-11/12 mx-auto">
       <div>
         <h2 className="md:text-3xl text-xl font-bold text-center md:mt-8 font-openSans">
-        Your Rental Listings
+          Your Rental Listings
         </h2>
         <p className="text-gray-600 text-center md:px-12">
-        Manage and track all the cars you've listed for rent. Update details, view status, or remove listings with ease.
+          Manage and track all the cars you&apos;ve listed for rent. Update
+          details, view status, or remove listings with ease.
         </p>
       </div>
       {/* My Cars Table */}
@@ -55,27 +62,38 @@ const MyCars = () => {
                 <th></th>
                 <th>Name</th>
                 <th className="flex justify-between">
-                  <span>Daily Rental Price</span>{" "}
-                  <span className="hover:scale-105">
-                    {/* <FaSortNumericDown className={`text-[1rem]`} />
-                    <FaSortNumericDownAlt className={`text-[1rem] `} /> */}
-                  </span>
+                  <span>Daily Rental Price</span>
+
+                  {/* Drop Down */}
+                  <div className="dropdown dropdown-hover hover:text-black ">
+                    <button className="px-3">
+                      <FaSort />
+                    </button>
+                    <ul
+                      tabIndex={0}
+                      className="dropdown-content menu bg-base-300 rounded-box z-[1] w-52 p-2 shadow"
+                    >
+                      <li onClick={() => setSortValue("dsc")}>
+                        <a> Rent High - Low</a>
+                      </li>
+                      <li onClick={() => setSortValue("asc")}>
+                        <a>Rent Low - High</a>
+                      </li>
+                    </ul>
+                  </div>
                 </th>
+                <th>Booking Count</th>
                 <th>Availability</th>
                 <th className="flex justify-between">
                   <span>Date Added</span>
-                  <span className="hover:scale-105">
-                    {/* <FaSortNumericDown className={`text-[1rem]`} /> */}
-                    {/* <FaSortNumericDownAlt className={`text-[1rem]`} /> */}
-                  </span>
                 </th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               {/* row 1 */}
-              {myCarsData &&
-                myCarsData.map((car, idx) => (
+              {carData &&
+                carData.map((car, idx) => (
                   <TableRow
                     key={car._id}
                     car={car}

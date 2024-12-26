@@ -8,7 +8,7 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 const TableRow = ({ car, setRefresh, refresh, idx }) => {
-  const { rentPrice, availability, timePosted, carModel, image } = car;
+  const { rentPrice, availability, timePosted, carModel, image, bookingCount } = car;
   const day = new Date(timePosted).getDate();
   const month = new Date(timePosted).getMonth() + 1;
   const year = new Date(timePosted).getFullYear();
@@ -29,7 +29,7 @@ const TableRow = ({ car, setRefresh, refresh, idx }) => {
 
   const handleDelete = (id) => {
     axios.delete(`/delete-car/${id}`).then((res) => {
-      if(res.data.deletedCount){
+      if (res.data.deletedCount) {
         hotToastSuccess("Car Removed");
         setRefresh(refresh + 1);
       }
@@ -54,8 +54,12 @@ const TableRow = ({ car, setRefresh, refresh, idx }) => {
 
   return (
     <>
-      <tr className={`hover:bg-primary hover:text-white duration-500 ease-in-out transition-all  ${idx%2 === 0 || "bg-slate-200"}`}>
-        <td>{idx+1}</td>
+      <tr
+        className={`hover:bg-primary hover:text-white duration-500 ease-in-out transition-all  ${
+          idx % 2 === 0 || "bg-slate-200"
+        }`}
+      >
+        <td>{idx + 1}</td>
         <td>
           <div className="flex items-center gap-3">
             <div className="avatar">
@@ -72,6 +76,9 @@ const TableRow = ({ car, setRefresh, refresh, idx }) => {
 
         <td>
           <span className="font-bold">$ {rentPrice}</span>
+        </td>
+        <td>
+          <span>{bookingCount} time</span>
         </td>
         <td>
           <span

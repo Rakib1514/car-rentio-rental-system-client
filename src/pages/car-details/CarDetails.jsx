@@ -17,19 +17,19 @@ const CarDetails = () => {
     setTimeString(timeString);
   };
 
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   const showModal = () => {
     setIsModalOpen(true);
   };
 
   const [totalDay, setTotalDay] = useState(0);
-  
+
   const handleBooking = (values) => {
-    const {startDate, endDate} =  values;
-      
-    setTotalDay(endDate.diff(startDate, 'days'));
-    
+    const { startDate, endDate } = values;
+
+    setTotalDay(endDate.diff(startDate, "days"));
+
     const bookingInfo = {
       ...values,
       timeString,
@@ -42,15 +42,16 @@ const CarDetails = () => {
       timeOfBooking: new Date().getTime(),
     };
 
-    axios.post("/my-bookings", bookingInfo)
-      .then(res => {
-        if(res.data.insertedId){
-          hotToastSuccess("Reserved. Happy Journey")
-        }
-        setIsModalOpen(false);
-      })
+    axios.post("/my-bookings", bookingInfo).then((res) => {
+      if (res.data.insertedId) {
+        axios.patch(`/booking-count/${car._id}/inc`)
+          .then(res=> {console.log(res.data);})
+        hotToastSuccess("Reserved. Happy Journey");
+      }
+      setIsModalOpen(false);
+    });
 
-    // todo: booking count need to adjust 
+    // todo: booking count need to adjust
   };
 
   return (
