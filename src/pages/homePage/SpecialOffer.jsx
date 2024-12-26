@@ -2,14 +2,14 @@ import { motion } from "framer-motion";
 
 const SpecialOffer = () => {
   return (
-    <div>
-      <div className="w-11/12 mx-auto my-12">
+    <div className="overflow-x-hidden">
+      <div className="w-11/12 mx-auto my-12 ">
         <h2 className="text-3xl font-bold text-center mb-6">Special Offers</h2>
         <p className="text-gray-600 text-center mb-8">
           Grab these exclusive deals and make your journey more affordable and
           luxurious.
         </p>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid lg:grid-cols-3 grid-cols-1 gap-6">
           <motion.div
             initial={{
               x: -350,
