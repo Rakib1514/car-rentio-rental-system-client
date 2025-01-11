@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { hotToastError } from "../utils";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://carrentio.vercel.app",
   withCredentials: true,
 });
 

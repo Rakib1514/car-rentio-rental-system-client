@@ -48,13 +48,13 @@ const routes = createBrowserRouter([
       {
         path: "available-cars",
         element: <AvailableCars />,
-        loader: () => fetch("http://localhost:5000/cars?available=true"),
+        loader: () => fetch("https://carrentio.vercel.app/cars?available=true"),
       },
       {
         path: "car/:id",
         element: <CarDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/car/${params.id}`),
+          fetch(`https://carrentio.vercel.app/car/${params.id}`),
       },
       {
         path: "/register",
