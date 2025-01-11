@@ -2,7 +2,7 @@
 
 ## Live Site
 
-You can try out the live version of the Car-Rentio project here: [Car-Rentio Live](https://car-rentio.rakibcodes.live/){:target="_blank"}
+You can try out the live version of the Car-Rentio project here: [Car-Rentio Live](https://car-rentio.rakibcodes.live/)
 
 Welcome to **Car-Rentio**, an intuitive and efficient car rental system designed to make the process of renting a car quick and easy. Whether you're planning a road trip, a business trip, or just need a vehicle for a short-term rental, Car-Rentio is here to provide an exceptional experience.
 
