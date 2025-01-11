@@ -1,5 +1,5 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://carrentio.vercel.app";
+axios.defaults.baseURL = "http://localhost:5000";
 
 export default axios;

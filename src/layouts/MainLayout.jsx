@@ -7,12 +7,15 @@ const MainLayout = () => {
   return (
     <div className="font-roboto overflow-x-hidden">
       <header>
-      <Toaster />
-        <nav>
+        <Toaster />
+        <nav className="fixed left-0 top-0 w-full z-20">
           <Navbar />
         </nav>
       </header>
       <main>
+        <div style={{visibility: "hidden"}}>
+          <Navbar />
+        </div>
         <Outlet />
       </main>
       <footer>

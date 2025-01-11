@@ -47,7 +47,7 @@ const Navbar = () => {
     return <div className="w-full h-16 skeleton" />;
   }
   return (
-    <nav>
+    <nav >
       <div className="navbar bg-base-100 w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">

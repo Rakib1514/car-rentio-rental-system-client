@@ -26,7 +26,11 @@ const CarDetails = () => {
   const { user } = useAuth();
 
   const showModal = () => {
-    setIsModalOpen(true);
+    if (!user) {
+      navigate("/sign-in");
+    } else {
+      setIsModalOpen(true);
+    }
   };
 
   const navigate = useNavigate();
@@ -99,7 +103,12 @@ const CarDetails = () => {
             <p>
               <span className="font-semibold text-2xl">${rentPrice}</span> /Day
             </p>
-            <button onClick={showModal} className={`btn bg-primary text-white ${availability || "btn-disabled"}`}>
+            <button
+              onClick={showModal}
+              className={`btn bg-primary text-white ${
+                availability || "btn-disabled"
+              }`}
+            >
               Book Now
             </button>
           </div>
