@@ -57,7 +57,7 @@ const Footer = () => {
             <nav className="my-6 flex flex-col gap-2">
               <h6 className="footer-title">Legal</h6>
               <Link to={'/legal/terms-of-use'} className="link link-hover">Terms of use</Link>
-              <a className="link link-hover">Privacy policy</a>
+              <Link to={'/legal/privacy-policy'} className="link link-hover">Privacy policy</Link>
               <a className="link link-hover">Cookie policy</a>
             </nav>
           </nav>

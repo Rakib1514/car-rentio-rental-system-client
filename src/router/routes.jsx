@@ -11,6 +11,7 @@ import SignInPage from "../pages/authentication/SignInPage";
 import MyBookings from "../pages/my-bookings/MyBookings";
 import Error from "../pages/Error-page/Error";
 import TermsOfUse from "../pages/Terms-of-use/TermsOfUse";
+import PrivacyPolicy from "../pages/Privacy-policy/PrivacyPolicy";
 
 const routes = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const routes = createBrowserRouter([
       {
         path: "/legal/terms-of-use",
         element: <TermsOfUse/>
+      },
+      {
+        path: "/legal/privacy-policy",
+        element: <PrivacyPolicy/>
       }
     ],
   },
