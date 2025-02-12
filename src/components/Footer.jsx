@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, ScrollRestoration } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div>
+      <ScrollRestoration/>
       <footer className="footer bg-base-200 p-10 mt-12">
         <aside>
           <img
@@ -58,7 +59,7 @@ const Footer = () => {
               <h6 className="footer-title">Legal</h6>
               <Link to={'/legal/terms-of-use'} className="link link-hover">Terms of use</Link>
               <Link to={'/legal/privacy-policy'} className="link link-hover">Privacy policy</Link>
-              <a className="link link-hover">Cookie policy</a>
+              <Link to={"/legal/cookie-policy"} className="link link-hover">Cookie policy</Link >
             </nav>
           </nav>
         </div>

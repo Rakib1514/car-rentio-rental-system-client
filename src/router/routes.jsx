@@ -12,6 +12,7 @@ import MyBookings from "../pages/my-bookings/MyBookings";
 import Error from "../pages/Error-page/Error";
 import TermsOfUse from "../pages/Terms-of-use/TermsOfUse";
 import PrivacyPolicy from "../pages/Privacy-policy/PrivacyPolicy";
+import CookiePolicy from "../pages/Cookie-Policy/CookiePolicy";
 
 const routes = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const routes = createBrowserRouter([
       {
         path: "/legal/privacy-policy",
         element: <PrivacyPolicy/>
+      },
+      {
+        path: "/legal/cookie-policy",
+        element: <CookiePolicy/>
       }
     ],
   },
