@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import SignInPage from "../pages/authentication/SignInPage";
 import MyBookings from "../pages/my-bookings/MyBookings";
 import Error from "../pages/Error-page/Error";
+import TermsOfUse from "../pages/Terms-of-use/TermsOfUse";
 
 const routes = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const routes = createBrowserRouter([
         path: "/sign-in",
         element: <SignInPage />,
       },
+      {
+        path: "/legal/terms-of-use",
+        element: <TermsOfUse/>
+      }
     ],
   },
 ]);

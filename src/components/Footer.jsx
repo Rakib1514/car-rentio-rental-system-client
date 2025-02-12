@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <div>
@@ -54,7 +56,7 @@ const Footer = () => {
             </div>
             <nav className="my-6 flex flex-col gap-2">
               <h6 className="footer-title">Legal</h6>
-              <a className="link link-hover">Terms of use</a>
+              <Link to={'/legal/terms-of-use'} className="link link-hover">Terms of use</Link>
               <a className="link link-hover">Privacy policy</a>
               <a className="link link-hover">Cookie policy</a>
             </nav>
