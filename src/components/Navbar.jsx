@@ -47,7 +47,7 @@ const Navbar = () => {
     return <div className="w-full h-16 skeleton" />;
   }
   return (
-    <nav >
+    <nav>
       <div className="navbar bg-base-100 w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -75,14 +75,16 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <div className="flex items-center relative">
-            <a className="font-bold text-xl font-openSans">Car-Rentio</a>
-            <img
-              src="https://i.ibb.co.com/xfY2N89/Pngtree-auto-logo-car-4236175.png"
-              alt=""
-              className="absolute translate-x-24 lg:block hidden"
-            />
-          </div>
+          <Link to={'/'}>
+            <div className="flex items-center relative">
+              <a className="font-bold text-xl font-openSans">Car-Rentio</a>
+              <img
+                src="https://i.ibb.co.com/xfY2N89/Pngtree-auto-logo-car-4236175.png"
+                alt=""
+                className="absolute translate-x-24 lg:block hidden"
+              />
+            </div>
+          </Link>
         </div>
         <div className="navbar-center hidden md:flex">
           <ul
