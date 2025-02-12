@@ -69,16 +69,16 @@ const routes = createBrowserRouter([
       },
       {
         path: "/legal/terms-of-use",
-        element: <TermsOfUse/>
+        element: <TermsOfUse />,
       },
       {
         path: "/legal/privacy-policy",
-        element: <PrivacyPolicy/>
+        element: <PrivacyPolicy />,
       },
       {
         path: "/legal/cookie-policy",
-        element: <CookiePolicy/>
-      }
+        element: <CookiePolicy />,
+      },
     ],
   },
 ]);

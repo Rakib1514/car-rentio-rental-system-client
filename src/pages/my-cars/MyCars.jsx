@@ -124,7 +124,7 @@ const MyCars = () => {
         </div>
       </div>
 
-      <div className="min-h-svh">
+      <div>
         {/* Section heading */}
         <div className="mb-6 space-y-4 text-center">
           <h2 className="font-openSans text-xl font-bold md:text-3xl">
