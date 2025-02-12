@@ -6,14 +6,15 @@ import { Helmet } from "react-helmet";
 
 const Error = () => {
   return (
-    
     <div>
       <Helmet>
         <title>Error | Car-Rantio</title>
       </Helmet>
       <Navbar />
-      <div className="min-h-svh flex flex-col items-center w-11/12 mx-auto">
-        <h2 className="py-4 md:text-3xl text-xl font-bold font-openSans">Uh-oh! This Page Crashed</h2>
+      <div className="mx-auto flex min-h-svh w-11/12 flex-col items-center">
+        <h2 className="py-4 font-openSans text-xl font-bold md:text-3xl">
+          Uh-oh! This Page Crashed
+        </h2>
         <p>404 Page Not Found...... Go home</p>
         <Lottie className="h-96" animationData={carCrash} loop={true} />
         <Link className="btn bg-primary text-white hover:text-black">

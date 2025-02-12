@@ -57,9 +57,9 @@ const AddCar = () => {
       <Helmet>
         <title>Car-Rantio | Add Your Car</title>
       </Helmet>
-      <div className="flex flex-col justify-center items-center ">
-        <div className="py-10 text-center space-y-2">
-          <h2 className=" text-3xl font-semibold uppercase">
+      <div className="flex flex-col items-center justify-center">
+        <div className="space-y-2 py-10 text-center">
+          <h2 className="text-3xl font-semibold uppercase">
             Add Your Car to Car-rentio Fleet
           </h2>
           <p>

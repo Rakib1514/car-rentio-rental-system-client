@@ -23,10 +23,11 @@ const SignIn = ({ setIsModalOpen, isModalOpen }) => {
       })
       .catch((error) => {
         setLoading(false);
-        hotToastError(error.message ||"Password or email incorrect, please try again");
+        hotToastError(
+          error.message || "Password or email incorrect, please try again",
+        );
       });
   };
-  
 
   return (
     <>
@@ -92,18 +93,18 @@ const SignIn = ({ setIsModalOpen, isModalOpen }) => {
           <Link
             to="/register"
             onClick={() => setIsModalOpen(false)}
-            className="block text-sm mt-4  hover:underline"
+            className="mt-4 block text-sm hover:underline"
           >
             Don&apos;t have an account? Register here
           </Link>
         </Form>
 
-        <div className="flex items-center justify-center mt-4">
-          <div className="border-gray-400 border-b w-full "></div>
+        <div className="mt-4 flex items-center justify-center">
+          <div className="w-full border-b border-gray-400"></div>
           <span className="px-6">or</span>
-          <div className="border-gray-400 border-b w-full"></div>
+          <div className="w-full border-b border-gray-400"></div>
         </div>
-        
+
         <GoogleSignIn setIsModalOpen={setIsModalOpen} />
       </Modal>
     </>

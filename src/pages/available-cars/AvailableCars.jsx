@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import CardAvailableCar from "./CardAvailableCar";
 import { FaList } from "react-icons/fa";
@@ -34,7 +34,7 @@ const AvailableCars = () => {
   const handleSort = (value) => {
     if (value === "high") {
       const sortedHigh = [...initData].sort(
-        (a, b) => b.rentPrice - a.rentPrice
+        (a, b) => b.rentPrice - a.rentPrice,
       );
       setAvailableCars(sortedHigh);
     } else if (value === "low") {
@@ -49,22 +49,22 @@ const AvailableCars = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="mx-auto w-11/12">
       <Helmet>
         <title>Car-Rantio | Available Cars</title>
       </Helmet>
       {/* for heading and buttons */}
       <div>
         <div className="space-y-4 border-b border-gray-400 pb-4">
-          <h2 className="md:text-3xl text-xl font-bold text-center md:mt-8 font-openSans">
+          <h2 className="text-center font-openSans text-xl font-bold md:mt-8 md:text-3xl">
             Available Cars – Find Your Perfect Ride!
           </h2>
-          <p className="text-gray-600 text-center md:px-12">
+          <p className="text-center text-gray-600 md:px-12">
             Browse our collection of available cars and book your next adventure
             with ease.
           </p>
         </div>
-        <div className="py-6 flex justify-between">
+        <div className="flex justify-between py-6">
           <div className="form-control">
             <input
               type="text"
@@ -73,13 +73,13 @@ const AvailableCars = () => {
               className="input input-bordered w-24 md:w-auto"
             />
           </div>
-          <div className="flex gap-4 items-center">
+          <div className="flex items-center gap-4">
             <button
               onClick={() => setView(!view)}
-              className="btn bg-primary text-white text-xl hover:text-black hover:border hover:border-black"
+              className="btn bg-primary text-xl text-white hover:border hover:border-black hover:text-black"
             >
               <FaList className={view || "hidden"} />
-              <IoGridSharp className={`${view && "hidden "}`} />
+              <IoGridSharp className={`${view && "hidden"}`} />
             </button>
 
             {/* Sort button */}
@@ -93,7 +93,7 @@ const AvailableCars = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content menu bg-base-300 rounded-box z-[1] w-52 p-2 shadow"
+                className="menu dropdown-content z-[1] w-52 rounded-box bg-base-300 p-2 shadow"
               >
                 <li onClick={() => handleSort("high")}>
                   <a>Rent high to low</a>
@@ -110,7 +110,7 @@ const AvailableCars = () => {
       {/* for Cards */}
       <div
         className={`grid grid-cols-1 ${
-          view && "md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4"
+          view && "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
         } gap-4`}
       >
         {paginatedCars.map((car) => (
@@ -119,7 +119,7 @@ const AvailableCars = () => {
       </div>
 
       {/* Pagination Component */}
-      <div className="flex justify-center mt-8">
+      <div className="mt-8 flex justify-center">
         <Pagination
           current={currentPage}
           total={availableCars.length}

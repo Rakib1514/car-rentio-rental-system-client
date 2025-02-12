@@ -23,12 +23,15 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="py-12 md:w-1/2 mx-auto">
-      <div className="mb-12 text-center space-y-2">
-        <h2 className="font-bold font-openSans md:text-3xl text-xl">
+    <div className="mx-auto py-12 md:w-1/2">
+      <div className="mb-12 space-y-2 text-center">
+        <h2 className="font-openSans text-xl font-bold md:text-3xl">
           Welcome Back to Car-Rentio!
         </h2>
-        <p>Sign in to manage your bookings, add cars, and explore exclusive deals.</p>
+        <p>
+          Sign in to manage your bookings, add cars, and explore exclusive
+          deals.
+        </p>
       </div>
       <Form
         name="basic"
@@ -82,14 +85,14 @@ const SignInPage = () => {
             Submit
           </Button>
         </Form.Item>
-        <Link to="/register" className="block text-sm mt-4  hover:underline">
+        <Link to="/register" className="mt-4 block text-sm hover:underline">
           Don&apos;t have an account? Register here
         </Link>
       </Form>
-      <div className="flex items-center justify-center mt-4">
-        <div className="border-gray-400 border-b w-full "></div>
+      <div className="mt-4 flex items-center justify-center">
+        <div className="w-full border-b border-gray-400"></div>
         <span className="px-6">or</span>
-        <div className="border-gray-400 border-b w-full"></div>
+        <div className="w-full border-b border-gray-400"></div>
       </div>
       <GoogleSignIn />
     </div>

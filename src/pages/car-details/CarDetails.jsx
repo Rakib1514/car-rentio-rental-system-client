@@ -64,12 +64,12 @@ const CarDetails = () => {
   };
 
   return (
-    <div className=" bg-base-200 min-h-screen">
+    <div className="min-h-screen bg-base-200">
       <Helmet>
         <title>Car-Rantio | {carModel} </title>
       </Helmet>
       <ScrollRestoration />
-      <div className="w-11/12 mx-auto text-center py-10">
+      <div className="mx-auto w-11/12 py-10 text-center">
         <h2 className="text-xl font-semibold">
           Experience the Thrill of{" "}
           <span className="text-primary">{carModel}</span>!
@@ -80,28 +80,28 @@ const CarDetails = () => {
           choice for your next adventure.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 w-11/12 mx-auto gap-8 rounded-xl border border-gray-400 shadow-xl bg-base-100">
-        <div className="card bg-base-200 w-full  h-full  md:rounded-l-xl rounded-none">
+      <div className="mx-auto grid w-11/12 grid-cols-1 gap-8 rounded-xl border border-gray-400 bg-base-100 shadow-xl md:grid-cols-2">
+        <div className="card h-full w-full rounded-none bg-base-200 md:rounded-l-xl">
           <img
             src={image}
             alt={carModel}
             className="h-full w-full object-cover md:rounded-l-xl"
           />
         </div>
-        <div className=" md:w-1/2 lg:text-left py-6 px-6 md:px-0">
-          <h1 className="lg:text-5xl md:text-3xl text-xl font-bold space-y-4">
+        <div className="px-6 py-6 md:w-1/2 md:px-0 lg:text-left">
+          <h1 className="space-y-4 text-xl font-bold md:text-3xl lg:text-5xl">
             {carModel}
             <span
               className={`badge ${
                 availability ? "bg-green-700" : "bg-red-700"
-              } text-white py-4 font-openSans`}
+              } py-4 font-openSans text-white`}
             >
               {availability ? "Available" : "Unavailable"}
             </span>
           </h1>
-          <div className="flex items-center  gap-8 my-4">
+          <div className="my-4 flex items-center gap-8">
             <p>
-              <span className="font-semibold text-2xl">${rentPrice}</span> /Day
+              <span className="text-2xl font-semibold">${rentPrice}</span> /Day
             </p>
             <button
               onClick={showModal}
@@ -114,7 +114,7 @@ const CarDetails = () => {
           </div>
           {/* todo: add icons for good looking */}
           <div className="my-4 text-left">
-            <p className=" font-semibold flex gap-2 items-center">
+            <p className="flex items-center gap-2 font-semibold">
               Features <BsTools className="text-black" />
             </p>
             <ul className="text-left">
@@ -127,7 +127,7 @@ const CarDetails = () => {
             </ul>
           </div>
           <div className="text-left">
-            <h2 className=" font-semibold flex  gap-2 items-center">
+            <h2 className="flex items-center gap-2 font-semibold">
               Description <FaRegFile />
             </h2>
             <p>{description}</p>

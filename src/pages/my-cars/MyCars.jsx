@@ -56,15 +56,15 @@ const MyCars = () => {
   }
 
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="mx-auto w-11/12">
       <Helmet>
         <title>Car-Rantio | Manage Cars</title>
       </Helmet>
       <div>
-        <h2 className="md:text-3xl text-xl font-bold text-center md:mt-8 font-openSans">
+        <h2 className="text-center font-openSans text-xl font-bold md:mt-8 md:text-3xl">
           Your Rental Listings
         </h2>
-        <p className="text-gray-600 text-center md:px-12">
+        <p className="text-center text-gray-600 md:px-12">
           Manage and track all the cars you&apos;ve listed for rent. Update
           details, view status, or remove listings with ease.
         </p>
@@ -74,7 +74,7 @@ const MyCars = () => {
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead className="text-white bg-primary ">
+            <thead className="bg-primary text-white">
               <tr>
                 <th></th>
                 <th>Name</th>
@@ -82,13 +82,13 @@ const MyCars = () => {
                   <span>Daily Rental Price</span>
 
                   {/* Drop Down */}
-                  <div className="dropdown dropdown-hover hover:text-black ">
+                  <div className="dropdown dropdown-hover hover:text-black">
                     <button className="px-3">
                       <FaSort />
                     </button>
                     <ul
                       tabIndex={0}
-                      className="dropdown-content menu bg-base-300 rounded-box z-[1] w-52 p-2 shadow"
+                      className="menu dropdown-content z-[1] w-52 rounded-box bg-base-300 p-2 shadow"
                     >
                       <li onClick={() => setSortValue("dsc")}>
                         <a> Rent High - Low</a>
@@ -126,8 +126,8 @@ const MyCars = () => {
 
       <div className="min-h-svh">
         {/* Section heading */}
-        <div className="text-center mb-6 space-y-4">
-          <h2 className=" md:text-3xl text-xl font-bold font-openSans">
+        <div className="mb-6 space-y-4 text-center">
+          <h2 className="font-openSans text-xl font-bold md:text-3xl">
             Daily Rental Rates by Car Model of Your Cars
           </h2>
           <p>Explore daily rental rates for each model you Added.</p>

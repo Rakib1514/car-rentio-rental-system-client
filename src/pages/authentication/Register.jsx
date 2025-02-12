@@ -66,25 +66,25 @@ const Register = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
-        <div className="text-center lg:w-1/2 w-full lg:text-left">
+        <div className="w-full text-center lg:w-1/2 lg:text-left">
           <h1 className="text-5xl font-bold">Join Car-Rentio Today</h1>
           <p className="py-6">
             Create your account and start your journey with seamless car
             rentals.
           </p>
         </div>
-        <div className="card bg-base-100 lg:w-1/2 w-full shrink-0 shadow-2xl">
+        <div className="card w-full shrink-0 bg-base-100 shadow-2xl lg:w-1/2">
           <GoogleSignIn />
           <div className="flex items-center justify-center">
-            <div className="border-gray-400 border-b w-full "></div>
+            <div className="w-full border-b border-gray-400"></div>
             <span className="px-6">or</span>
-            <div className="border-gray-400 border-b w-full"></div>
+            <div className="w-full border-b border-gray-400"></div>
           </div>
-          <p className="text-center px-2">Create an Account</p>
+          <p className="px-2 text-center">Create an Account</p>
           <form onSubmit={handleSubmit} className="card-body">
-            <div className="form-control Name">
+            <div className="Name form-control">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
@@ -96,7 +96,7 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="form-control photoUrl">
+            <div className="photoUrl form-control">
               <label className="label">
                 <span className="label-text">Photo URL</span>
               </label>
@@ -108,7 +108,7 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="form-control email">
+            <div className="email form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
@@ -120,7 +120,7 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="form-control password">
+            <div className="password form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
@@ -132,11 +132,11 @@ const Register = () => {
                 required
               />
               <label className="label">
-                {errorMsg && <p className="text-red-500 text-xs">{errorMsg}</p>}
+                {errorMsg && <p className="text-xs text-red-500">{errorMsg}</p>}
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-primary text-white font-openSans tracking-wider hover:text-black">
+              <button className="btn bg-primary font-openSans tracking-wider text-white hover:text-black">
                 Register
               </button>
             </div>

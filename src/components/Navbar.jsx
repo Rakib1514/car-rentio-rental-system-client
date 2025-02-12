@@ -44,11 +44,11 @@ const Navbar = () => {
     setIsModalOpen(true);
   };
   if (loading) {
-    return <div className="w-full h-16 skeleton" />;
+    return <div className="skeleton h-16 w-full" />;
   }
   return (
     <nav>
-      <div className="navbar bg-base-100 w-11/12 mx-auto">
+      <div className="navbar mx-auto w-11/12 bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -70,18 +70,18 @@ const Navbar = () => {
             <ul
               id="dropNavLink"
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
             >
               {links}
             </ul>
           </div>
-          <Link to={'/'}>
-            <div className="flex items-center relative">
-              <a className="font-bold text-xl font-openSans">Car-Rentio</a>
+          <Link to={"/"}>
+            <div className="relative flex items-center">
+              <a className="font-openSans text-xl font-bold">Car-Rentio</a>
               <img
                 src="https://i.ibb.co.com/xfY2N89/Pngtree-auto-logo-car-4236175.png"
                 alt=""
-                className="absolute translate-x-24 lg:block hidden"
+                className="absolute hidden translate-x-24 lg:block"
               />
             </div>
           </Link>
@@ -89,7 +89,7 @@ const Navbar = () => {
         <div className="navbar-center hidden md:flex">
           <ul
             id="navLinks"
-            className="menu menu-horizontal px-1  transition-all duration-300"
+            className="menu menu-horizontal px-1 transition-all duration-300"
           >
             {links}
           </ul>
@@ -105,16 +105,16 @@ const Navbar = () => {
               </p>
             </>
           ) : (
-            <div className=" flex gap-2">
+            <div className="flex gap-2">
               <a
                 onClick={showModal}
-                className="font-semibold hover:border-b hover:border-black cursor-pointer join"
+                className="join cursor-pointer font-semibold hover:border-b hover:border-black"
               >
                 Sign-in |
               </a>
               <Link
                 to={"/register"}
-                className="font-semibold hover:border-b hover:border-black cursor-pointer join"
+                className="join cursor-pointer font-semibold hover:border-b hover:border-black"
               >
                 Register
               </Link>
@@ -125,7 +125,7 @@ const Navbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle avatar"
+                className="avatar btn btn-circle btn-ghost"
               >
                 <div className="w-10 rounded-full">
                   <img alt="user" src={user?.photoURL} />

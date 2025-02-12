@@ -112,7 +112,7 @@ const ModalBooking = ({
         </Form.Item>
       </Form>
       <div
-        className="bg-center p-6 "
+        className="bg-center p-6"
         style={{ backgroundImage: `url(${image})` }}
       >
         <div className="bg-white bg-opacity-40 p-4 backdrop-blur-md">

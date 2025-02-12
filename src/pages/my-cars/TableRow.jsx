@@ -56,7 +56,7 @@ const TableRow = ({ car, setRefresh, refresh, idx }) => {
   return (
     <>
       <tr
-        className={`hover:bg-primary hover:text-white duration-500 ease-in-out transition-all  ${
+        className={`transition-all duration-500 ease-in-out hover:bg-primary hover:text-white ${
           idx % 2 === 0 || "bg-slate-200"
         }`}
       >
@@ -96,13 +96,13 @@ const TableRow = ({ car, setRefresh, refresh, idx }) => {
         <td>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="p-2 mr-2 hover:scale-110 bg-primary text-white"
+            className="mr-2 bg-primary p-2 text-white hover:scale-110"
           >
             <FaEdit />
           </button>
           <button
             onClick={() => submit(car._id)}
-            className="p-2 mr-2 hover:scale-110 bg-red-800 text-white"
+            className="mr-2 bg-red-800 p-2 text-white hover:scale-110"
           >
             <FaTrash />
           </button>

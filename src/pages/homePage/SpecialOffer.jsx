@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 const SpecialOffer = () => {
   return (
     <div className="overflow-x-hidden">
-      <div className="w-11/12 mx-auto my-12 ">
-        <h2 className="text-3xl font-bold text-center mb-6">Special Offers</h2>
-        <p className="text-gray-600 text-center mb-8">
+      <div className="mx-auto my-12 w-11/12">
+        <h2 className="mb-6 text-center text-3xl font-bold">Special Offers</h2>
+        <p className="mb-8 text-center text-gray-600">
           Grab these exclusive deals and make your journey more affordable and
           luxurious.
         </p>
-        <div className="grid lg:grid-cols-3 grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           <motion.div
             initial={{
               x: -350,
@@ -25,13 +25,13 @@ const SpecialOffer = () => {
             }}
           >
             <div
-              className="p-3 h-64 bg-center bg-cover flex items-end"
+              className="flex h-64 items-end bg-cover bg-center p-3"
               style={{
                 backgroundImage:
                   "url('https://i.ibb.co.com/34f0WHh/black-friday.jpg')",
               }}
             >
-              <h2 className="p-2 bg-white rounded font-semibold">
+              <h2 className="rounded bg-white p-2 font-semibold">
                 Unlock Up to 50% Off This Black Friday!
               </h2>
             </div>
@@ -57,13 +57,13 @@ const SpecialOffer = () => {
             }}
           >
             <div
-              className="p-3 h-64 bg-center bg-cover flex items-end"
+              className="flex h-64 items-end bg-cover bg-center p-3"
               style={{
                 backgroundImage:
                   "url('https://i.ibb.co.com/jWYNQFc/summer-party-1048-10093.jpg')",
               }}
             >
-              <h2 className="p-2 bg-white rounded font-semibold">
+              <h2 className="rounded bg-white p-2 font-semibold">
                 Weekend Frenzy – Grab Amazing Deals!
               </h2>
             </div>
@@ -88,13 +88,13 @@ const SpecialOffer = () => {
             }}
           >
             <div
-              className="p-3 h-64 bg-center bg-cover flex items-end"
+              className="flex h-64 items-end bg-cover bg-center p-3"
               style={{
                 backgroundImage:
                   "url('https://i.ibb.co.com/wBzgHMg/happy-new-year-2025-festive-celebration-background-1035-29586.jpg')",
               }}
             >
-              <h2 className="p-2 bg-white rounded font-semibold">
+              <h2 className="rounded bg-white p-2 font-semibold">
                 New Year, New Ride – Special Car Rental Deals!
               </h2>
             </div>

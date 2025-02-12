@@ -3,7 +3,12 @@ import { Button, Form, Modal } from "antd";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 
-const UpdateBookingDate = ({handleUpdateBooking,isModalOpen, setIsModalOpen, newDateObj}) => {
+const UpdateBookingDate = ({
+  handleUpdateBooking,
+  isModalOpen,
+  setIsModalOpen,
+  newDateObj,
+}) => {
   return (
     <Modal
       title={""}
@@ -29,7 +34,6 @@ const UpdateBookingDate = ({handleUpdateBooking,isModalOpen, setIsModalOpen, new
       >
         {/* Start Date picker */}
         <Form.Item
-        
           label="Start Date"
           name="startDate"
           rules={[{ required: true, message: "Please enter Start Date" }]}
@@ -63,7 +67,6 @@ const UpdateBookingDate = ({handleUpdateBooking,isModalOpen, setIsModalOpen, new
           </Button>
         </Form.Item>
       </Form>
-      
     </Modal>
   );
 };

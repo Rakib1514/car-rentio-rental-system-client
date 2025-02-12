@@ -23,14 +23,14 @@ const useAxiosSecure = () => {
           signOutUser()
             .then(() => {
               navigate("/sign-in");
-              hotToastError("Something went Wrong. Please sign-in again.")
+              hotToastError("Something went Wrong. Please sign-in again.");
             })
             .catch((error) => {
               console.log(error.message);
             });
         }
         return Promise.reject(error);
-      }
+      },
     );
   }, []);
 

@@ -12,9 +12,9 @@ const RecentListings = () => {
   }, []);
 
   return (
-    <div className="w-11/12 mx-auto my-16">
-      <div className="text-center mb-8">
-        <h2 className=" text-3xl font-semibold capitalize">
+    <div className="mx-auto my-16 w-11/12">
+      <div className="mb-8 text-center">
+        <h2 className="text-3xl font-semibold capitalize">
           Recent Listings – Fresh Rides Await!
         </h2>
         <p>
@@ -22,7 +22,7 @@ const RecentListings = () => {
           ride today.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {cars.map((car) => (
           <RecentCarCard key={car._id} car={car} />
         ))}

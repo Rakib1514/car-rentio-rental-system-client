@@ -50,12 +50,12 @@ const MyBookings = () => {
   }
 
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="mx-auto w-11/12">
       <Helmet>
         <title>Car-Rantio | Manage Bookings</title>
       </Helmet>
-      <div className="text-center space-y-2">
-        <h2 className="md:text-3xl text-xl font-bold md:mt-8 font-openSans">
+      <div className="space-y-2 text-center">
+        <h2 className="font-openSans text-xl font-bold md:mt-8 md:text-3xl">
           Track and Manage Your Bookings
         </h2>
         <p className="text-gray-600 md:px-12">
@@ -65,7 +65,7 @@ const MyBookings = () => {
       </div>
 
       {/* My bookings Table goes here */}
-      <div className="my-12 ">
+      <div className="my-12">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
@@ -101,8 +101,8 @@ const MyBookings = () => {
       {/* Rechart */}
       <div className="min-h-svh">
         {/* Section heading */}
-        <div className="text-center mb-6 space-y-4">
-          <h2 className=" md:text-3xl text-xl font-bold font-openSans">
+        <div className="mb-6 space-y-4 text-center">
+          <h2 className="font-openSans text-xl font-bold md:text-3xl">
             Daily Rental Rates by Car Model You Rented
           </h2>
           <p>Explore daily rental rates for each model you Rented.</p>

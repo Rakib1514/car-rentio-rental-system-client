@@ -16,12 +16,12 @@ const RecentCarCard = ({ car }) => {
       text={`${availability ? "Available" : "Unavailable"} `}
     >
       <Link to={`/car/${car._id}`} className="">
-        <div className="card bg-base-100 hover:shadow-xl hover:scale-[1.02] transition-transform border border-base-300 rounded-sm">
+        <div className="card rounded-sm border border-base-300 bg-base-100 transition-transform hover:scale-[1.02] hover:shadow-xl">
           <figure className="border-b-2">
             <img
               src={image}
               alt={carModel}
-              className="w-full md:h-64 object-cover"
+              className="w-full object-cover md:h-64"
             />
           </figure>
           <div className="card-body">
@@ -33,7 +33,7 @@ const RecentCarCard = ({ car }) => {
             </div>
             <div className="flex justify-between">
               <div>
-                <span className="font-semibold md:text-xl text-primary">
+                <span className="font-semibold text-primary md:text-xl">
                   ${rentPrice}/
                 </span>
                 <span>Day</span>

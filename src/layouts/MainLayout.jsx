@@ -5,15 +5,15 @@ import { Toaster } from "react-hot-toast";
 
 const MainLayout = () => {
   return (
-    <div className="font-roboto overflow-x-hidden">
+    <div className="overflow-x-hidden font-roboto">
       <header>
         <Toaster />
-        <nav className="fixed left-0 top-0 w-full z-20">
+        <nav className="fixed left-0 top-0 z-20 w-full">
           <Navbar />
         </nav>
       </header>
       <main>
-        <div style={{visibility: "hidden"}}>
+        <div style={{ visibility: "hidden" }}>
           <Navbar />
         </div>
         <Outlet />

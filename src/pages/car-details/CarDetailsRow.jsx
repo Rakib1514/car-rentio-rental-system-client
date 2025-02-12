@@ -1,14 +1,7 @@
-
 const CarDetailsRow = () => {
   return (
-    <div className="w-11/12 mx-auto">
-
-
-      <div>
-        
-      </div>
-      
-      
+    <div className="mx-auto w-11/12">
+      <div></div>
     </div>
   );
 };
