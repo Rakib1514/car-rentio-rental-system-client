@@ -1,28 +1,11 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { useState, useEffect } from "react";
 import SignIn from "../pages/authentication/SignIn";
+import PropTypes from "prop-types";
 
-const Navbar = () => {
+const Navbar = ({ darkMode, setDarkMode }) => {
   const { user, signOutUser, loading } = useAuth();
-  const [darkMode, setDarkMode] = useState(() => {
-    // Retrieve dark mode preference from local storage
-    return localStorage.getItem("darkMode") === "true";
-  });
-
-  useEffect(() => {
-    const html = document.documentElement;
-
-    if (darkMode) {
-      html.classList.add("dark");
-      html.setAttribute("data-theme", "dark");
-    } else {
-      html.classList.remove("dark");
-      html.setAttribute("data-theme", "light");
-    }
-
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
-  }, [darkMode]);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -207,6 +190,11 @@ const Navbar = () => {
       <SignIn isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+  setDarkMode: PropTypes.func.isRequired,
 };
 
 export default Navbar;

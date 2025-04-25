@@ -15,7 +15,7 @@ const RecentCarCard = ({ car }) => {
       color={`${availability ? "" : "red"}`}
       text={`${availability ? "Available" : "Unavailable"} `}
     >
-      <Link to={`/car/${car._id}`} className="">
+      <Link to={`/car/${car._id}`} className="hover:text-inherit">
         <div className="card rounded-sm border border-base-300 bg-base-100 transition-transform hover:scale-[1.02] hover:shadow-xl">
           <figure className="border-b-2">
             <img
@@ -33,7 +33,7 @@ const RecentCarCard = ({ car }) => {
             </div>
             <div className="flex justify-between">
               <div>
-                <span className="font-semibold text-primary md:text-xl">
+                <span className="font-semibold  md:text-xl">
                   ${rentPrice}/
                 </span>
                 <span>Day</span>

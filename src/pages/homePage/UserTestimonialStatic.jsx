@@ -36,7 +36,7 @@ const UserTestimonialStatic = () => {
         >
           {/* Slider 1 */}
           <SwiperSlide>
-            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#121212] p-6 text-black dark:text-white shadow-lg">
+            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#241753] p-6 text-black dark:text-white shadow-lg">
               <div className="flex items-start justify-between">
                 <span className="text-4xl font-bold text-primary">“</span>
                 <div className="flex space-x-1">
@@ -67,7 +67,7 @@ const UserTestimonialStatic = () => {
 
           {/* Slider 2 */}
           <SwiperSlide>
-            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#121212] p-6 text-black dark:text-white shadow-lg">
+            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#241753] p-6 text-black dark:text-white shadow-lg">
               <div className="flex items-start justify-between">
                 <span className="text-4xl font-bold text-primary">“</span>
                 <div className="flex space-x-1">
@@ -97,7 +97,7 @@ const UserTestimonialStatic = () => {
 
           {/* Slider 3 */}
           <SwiperSlide>
-            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#121212] p-6 text-black dark:text-white shadow-lg">
+            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#241753] p-6 text-black dark:text-white shadow-lg">
               <div className="flex items-start justify-between">
                 <span className="text-4xl font-bold text-primary">“</span>
                 <div className="flex space-x-1">
@@ -127,7 +127,7 @@ const UserTestimonialStatic = () => {
 
           {/* Slider 4 */}
           <SwiperSlide>
-            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#121212] p-6 text-black dark:text-white shadow-lg">
+            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#241753] p-6 text-black dark:text-white shadow-lg">
               <div className="flex items-start justify-between">
                 <span className="text-4xl font-bold text-primary">“</span>
                 <div className="flex space-x-1">
@@ -158,7 +158,7 @@ const UserTestimonialStatic = () => {
 
           {/* Slider 5 */}
           <SwiperSlide>
-            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#121212] p-6 text-black dark:text-white shadow-lg">
+            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#241753] p-6 text-black dark:text-white shadow-lg">
               <div className="flex items-start justify-between">
                 <span className="text-4xl font-bold text-primary">“</span>
                 <div className="flex space-x-1">
