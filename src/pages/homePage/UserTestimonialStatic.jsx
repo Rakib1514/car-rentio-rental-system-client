@@ -15,7 +15,7 @@ const UserTestimonialStatic = () => {
   return (
     <>
       <div className="mx-auto max-h-svh lg:w-4/6">
-        <div className="rounded-2xl border-b-2 border-primary pb-4 text-center font-openSans text-xl font-semibold md:text-3xl">
+        <div className="rounded-2xl border-b-2 border-primary pb-4 text-center font-openSans text-xl font-semibold md:text-3xl dark:text-white">
           <h1>What Clients Say</h1>
         </div>
         <Swiper
@@ -36,7 +36,7 @@ const UserTestimonialStatic = () => {
         >
           {/* Slider 1 */}
           <SwiperSlide>
-            <div className="relative max-w-md rounded-xl bg-[#121212] p-6 text-white shadow-lg">
+            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#121212] p-6 text-black dark:text-white shadow-lg">
               <div className="flex items-start justify-between">
                 <span className="text-4xl font-bold text-primary">“</span>
                 <div className="flex space-x-1">
@@ -44,7 +44,7 @@ const UserTestimonialStatic = () => {
                 </div>
               </div>
 
-              <p className="mb-4 mt-2 text-white">
+              <p className="mb-4 mt-2 text-black dark:text-white">
                 “Rented a car from this website, and the experience was
                 seamless! The car was in excellent condition, the booking
                 process was smooth, and customer support was fantastic. Highly
@@ -58,7 +58,7 @@ const UserTestimonialStatic = () => {
                   icon={<UserOutlined />}
                 />
                 <div className="ml-3">
-                  <h4 className="font-bold text-white">Jenifer L</h4>
+                  <h4 className="font-bold text-black dark:text-white">Jenifer L</h4>
                   <p className="text-sm text-gray-400">Renter</p>
                 </div>
               </div>
@@ -67,7 +67,7 @@ const UserTestimonialStatic = () => {
 
           {/* Slider 2 */}
           <SwiperSlide>
-            <div className="relative max-w-md rounded-xl bg-[#121212] p-6 text-white shadow-lg">
+            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#121212] p-6 text-black dark:text-white shadow-lg">
               <div className="flex items-start justify-between">
                 <span className="text-4xl font-bold text-primary">“</span>
                 <div className="flex space-x-1">
@@ -75,7 +75,7 @@ const UserTestimonialStatic = () => {
                 </div>
               </div>
 
-              <p className="mb-4 mt-2 text-white">
+              <p className="mb-4 mt-2 text-black dark:text-white">
                 “Had an amazing experience renting a car from this site! The
                 process was quick, the car was spotless, and the service was
                 top-notch. Will definitely rent again. Highly recommended!” 🚘🌟
@@ -88,7 +88,7 @@ const UserTestimonialStatic = () => {
                   icon={<UserOutlined />}
                 />
                 <div className="ml-3">
-                  <h4 className="font-bold text-white">Robert D</h4>
+                  <h4 className="font-bold text-black dark:text-white">Robert D</h4>
                   <p className="text-sm text-gray-400">Renter</p>
                 </div>
               </div>
@@ -97,7 +97,7 @@ const UserTestimonialStatic = () => {
 
           {/* Slider 3 */}
           <SwiperSlide>
-            <div className="relative max-w-md rounded-xl bg-[#121212] p-6 text-white shadow-lg">
+            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#121212] p-6 text-black dark:text-white shadow-lg">
               <div className="flex items-start justify-between">
                 <span className="text-4xl font-bold text-primary">“</span>
                 <div className="flex space-x-1">
@@ -105,7 +105,7 @@ const UserTestimonialStatic = () => {
                 </div>
               </div>
 
-              <p className="mb-4 mt-2 text-white">
+              <p className="mb-4 mt-2 text-black dark:text-white">
                 “Had an amazing experience renting a car from this site! The
                 process was quick, the car was spotless, and the service was
                 top-notch. Will definitely rent again. Highly recommended!” 🚘🌟
@@ -118,7 +118,7 @@ const UserTestimonialStatic = () => {
                   icon={<UserOutlined />}
                 />
                 <div className="ml-3">
-                  <h4 className="font-bold text-white">Emma Watson</h4>
+                  <h4 className="font-bold text-black dark:text-white">Emma Watson</h4>
                   <p className="text-sm text-gray-400">Renter</p>
                 </div>
               </div>
@@ -127,7 +127,7 @@ const UserTestimonialStatic = () => {
 
           {/* Slider 4 */}
           <SwiperSlide>
-            <div className="relative max-w-md rounded-xl bg-[#121212] p-6 text-white shadow-lg">
+            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#121212] p-6 text-black dark:text-white shadow-lg">
               <div className="flex items-start justify-between">
                 <span className="text-4xl font-bold text-primary">“</span>
                 <div className="flex space-x-1">
@@ -135,7 +135,7 @@ const UserTestimonialStatic = () => {
                 </div>
               </div>
 
-              <p className="mb-4 mt-2 text-white">
+              <p className="mb-4 mt-2 text-black dark:text-white">
                 “Absolutely loved my experience renting a car from this site!
                 The booking was seamless, the car was in perfect condition, and
                 the customer support was exceptional. I’ll definitely be using
@@ -149,7 +149,7 @@ const UserTestimonialStatic = () => {
                   icon={<UserOutlined />}
                 />
                 <div className="ml-3">
-                  <h4 className="font-bold text-white">Chris Hemsworth</h4>
+                  <h4 className="font-bold text-black dark:text-white">Chris Hemsworth</h4>
                   <p className="text-sm text-gray-400">Renter</p>
                 </div>
               </div>
@@ -158,7 +158,7 @@ const UserTestimonialStatic = () => {
 
           {/* Slider 5 */}
           <SwiperSlide>
-            <div className="relative max-w-md rounded-xl bg-[#121212] p-6 text-white shadow-lg">
+            <div className="relative max-w-md rounded-xl bg-white dark:bg-[#121212] p-6 text-black dark:text-white shadow-lg">
               <div className="flex items-start justify-between">
                 <span className="text-4xl font-bold text-primary">“</span>
                 <div className="flex space-x-1">
@@ -166,7 +166,7 @@ const UserTestimonialStatic = () => {
                 </div>
               </div>
 
-              <p className="mb-4 mt-2 text-white">
+              <p className="mb-4 mt-2 text-black dark:text-white">
                 “Fantastic experience renting from this site! The car was clean,
                 well-maintained, and the rental process was incredibly smooth.
                 The team made everything easy and hassle-free. Will definitely
@@ -180,7 +180,7 @@ const UserTestimonialStatic = () => {
                   icon={<UserOutlined />}
                 />
                 <div className="ml-3">
-                  <h4 className="font-bold text-white">Scarlett Johansson</h4>
+                  <h4 className="font-bold text-black dark:text-white">Scarlett Johansson</h4>
                   <p className="text-sm text-gray-400">Renter</p>
                 </div>
               </div>

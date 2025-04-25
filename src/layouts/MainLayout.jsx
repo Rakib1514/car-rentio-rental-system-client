@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 const MainLayout = () => {
   return (
-    <div className="overflow-x-hidden font-roboto">
+    <div className="overflow-x-hidden font-roboto dark:bg-gray-900 dark:text-gray-100">
       <header>
         <Toaster />
         <nav className="fixed left-0 top-0 z-20 w-full">

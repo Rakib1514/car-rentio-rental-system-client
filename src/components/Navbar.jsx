@@ -1,10 +1,33 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SignIn from "../pages/authentication/SignIn";
 
 const Navbar = () => {
   const { user, signOutUser, loading } = useAuth();
+  const [darkMode, setDarkMode] = useState(() => {
+    // Retrieve dark mode preference from local storage
+    return localStorage.getItem("darkMode") === "true";
+  });
+
+  useEffect(() => {
+    const html = document.documentElement;
+
+    if (darkMode) {
+      html.classList.add("dark");
+      html.setAttribute("data-theme", "dark");
+    } else {
+      html.classList.remove("dark");
+      html.setAttribute("data-theme", "light");
+    }
+
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   // Navbar Button Links
   const links = (
     <>
@@ -16,6 +39,11 @@ const Navbar = () => {
       <li>
         <NavLink to="/available-cars" className="navLinkBtn">
           Available Cars
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/sign-in" className="navLinkBtn">
+          Join Us
         </NavLink>
       </li>
       {user && (
@@ -48,7 +76,7 @@ const Navbar = () => {
   }
   return (
     <nav>
-      <div className="navbar mx-auto w-11/12 bg-base-100">
+      <div className="navbar mx-auto w-11/12 bg-base-100 shadow-lg dark:bg-gray-900 dark:text-gray-100">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -95,11 +123,52 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
+          {/* Dark Mode Toggle Button */}
+          <button
+            onClick={toggleDarkMode}
+            className="btn btn-circle btn-ghost"
+            aria-label="Toggle Dark Mode"
+          >
+            {darkMode ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 3v1.5M12 19.5V21M4.219 4.219l1.061 1.061M17.719 17.719l1.061 1.061M3 12h1.5M19.5 12H21M4.219 19.781l1.061-1.061M17.719 6.281l1.061-1.061M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21.752 15.002A9.718 9.718 0 0112.002 21c-5.385 0-9.75-4.365-9.75-9.75 0-4.005 2.445-7.432 5.954-8.978a.75.75 0 01.823 1.233 7.501 7.501 0 108.678 8.678.75.75 0 011.233.823z"
+                />
+              </svg>
+            )}
+          </button>
           {user ? (
             <>
               <p>
                 <span className="md:hidden">{user.displayName}</span>
-                <span onClick={signOutUser} className="btn btn-link text-black">
+                <span
+                  onClick={signOutUser}
+                  className="btn btn-link text-black dark:text-white"
+                >
                   Sign-out
                 </span>
               </p>
