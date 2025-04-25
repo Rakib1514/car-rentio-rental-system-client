@@ -3,26 +3,10 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Toaster } from "react-hot-toast";
 import { ConfigProvider, theme } from "antd";
-import { useEffect, useState } from "react";
+import useDarkMode from "../hooks/useDarkMode";
 
 const MainLayout = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("darkMode") === "true";
-  });
-
-  useEffect(() => {
-    const html = document.documentElement;
-
-    if (darkMode) {
-      html.classList.add("dark");
-      html.setAttribute("data-theme", "dark");
-    } else {
-      html.classList.remove("dark");
-      html.setAttribute("data-theme", "light");
-    }
-
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
-  }, [darkMode]);
+  const { darkMode, setDarkMode } = useDarkMode();
 
   return (
     <ConfigProvider
